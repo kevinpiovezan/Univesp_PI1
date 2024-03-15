@@ -1,0 +1,176 @@
+﻿.container-fluid {
+    max-width: 1700px;
+}
+
+/*#region Graphs*/
+.graph-section {
+    max-height: 500px;
+    overflow-y: auto;
+    position: relative;
+    padding: 0 8px !important;
+}
+
+.graph-container {
+    height: 250px;
+    background: white;
+    padding: 10px;
+    box-shadow: 4px 4px 2px #0002;
+}
+
+canvas {
+    height: 190px;
+}
+
+.rank-graph .graph-container {
+    height: 400px;
+}
+
+.graph-titles {
+    display: flex;
+    justify-content: center;
+    background: white;
+    box-shadow: 4px 4px 2px #0002;
+}
+
+.graph-selected {
+    border-bottom: 2px solid var(--clr-green);
+}
+
+.graph-title {
+    font-weight: bold;
+    font-size: 0.75rem;
+    margin: 0 5px;
+    color: #555;
+    margin-bottom: 0;
+    text-align: center;
+    border-radius: 4px 4px 0 0;
+    padding: 5px 0;
+}
+
+.sticky-top {
+    position: sticky;
+    top: 0;
+}
+
+.donut-inner {
+    position: absolute;
+}
+
+/*#endregion*/
+
+/*#region KPIS*/
+.data-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.card-dashboard {
+    flex-basis: calc(20% - 1.5rem);
+    padding: 10px 1rem;
+    background: white;
+    display: flex;
+    align-items: center;
+    margin: 0 1rem;
+}
+
+.card-icon {
+    font-size: 2.25rem;
+    color: white;
+    border-right: 3px solid white;
+    margin: 0 1rem 0 0;
+    padding: .75rem .75rem .75rem 0;
+}
+
+.card-data p {
+    margin-bottom: 0;
+    font-size: 0.80rem;
+    color: white;
+}
+
+.card-data h5 {
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 3px;
+    color: white;
+}
+
+#total-alunos {
+    background: var(--clr-green);
+}
+
+#total-alunos-escola-publica {
+    background: rgb(109, 50, 168);
+}
+
+#total-alunos-faculdade {
+    background: crimson;
+}
+
+#total-alunos-professores {
+    background: var(--clr-green-secondary);
+}
+
+
+#total-alunos-servidores-publicos {
+    background: var(--clr-orange-secondary);
+}
+
+#total-alunos-sptrans {
+    background: var(--clr-blue);
+}
+/*#endregion*/
+
+/*#region Filtros*/
+
+#form-filters {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 1rem;
+}
+
+    #form-filters .form-group {
+        flex: 0 0 calc(100% / 7 - 1rem);
+    }
+
+    #form-filters label, #form-filters input, #form-filters select {
+        font-size: .8rem;
+    }
+
+    #form-filters button {
+        font-size: 0.85rem;
+        border-radius: 8px;
+        margin-left: 3px;
+        display: block;
+        background: var(--clr-green);
+        color: white;
+        align-self: center;
+    }
+
+
+label {
+    margin-bottom: 0;
+}
+
+/*#endregion*/
+
+.info {
+    font-size: 0.8rem;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    color: #777;
+}
+
+@media screen and (max-width: 776px) {
+    .card-dashboard {
+        flex-basis: calc(100% - 1rem);
+        margin: .5rem 0;
+    }
+
+    #form-filters .form-group {
+        flex: 0 0 calc(50% - .5rem);
+    }
+}

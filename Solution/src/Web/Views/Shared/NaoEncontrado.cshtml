@@ -1,0 +1,37 @@
+﻿﻿@{
+    ViewData["Title"] = "Erro 404";
+}
+
+<div class="container text-center">
+    <div class="bg-soft-white shadow p-4 mt-3">
+        <img class="img-404" src="~/img/icons/error_404.svg" />
+        <br />
+
+        <h3 class="p-3">
+            A página que você tentou acessar não foi encontrada.
+        </h3>
+        <br />
+        <a class="btn-go-home bg-green-univesp text-bold text-white p-2" href="/">
+            Voltar à Página Inicial
+        </a>
+    </div>
+</div>
+
+<style>
+    .img-404 {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        display:block;
+    }
+
+    .btn-go-home {
+        cursor:pointer;
+        opacity: 0.85
+    }
+
+    .btn-go-home:hover {
+        cursor: pointer;
+        opacity: 1;
+    }
+</style>

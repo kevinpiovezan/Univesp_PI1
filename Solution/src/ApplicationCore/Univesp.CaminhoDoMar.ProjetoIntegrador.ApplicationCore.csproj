@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>Univesp.CaminhoDoMar.ProjetoIntegradorApplicationCore</AssemblyName>
+    <RootNamespace>Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Business\Arquivo.cs" />
+    <Compile Remove="Business\Ciclo_Checklist.cs" />
+    <Compile Remove="Business\Ciclo_Aluno.cs" />
+    <Compile Remove="Business\Ciclo_Renovacao.cs" />
+    <Compile Remove="Business\Aluno_Arquivo.cs" />
+    <Compile Remove="Business\Contato.cs" />
+    <Compile Remove="Business\Log_Atividade.cs" />
+    <Compile Remove="Business\Status_Arquivo.cs" />
+    <Compile Remove="Business\Tipo_Arquivo.cs" />
+    <Compile Remove="Business\Tipo_Aluno.cs" />
+    <Compile Remove="DTOs\ArquivoDTO.cs" />
+    <Compile Remove="DTOs\AtualizacaoChecklistDTO.cs" />
+    <Compile Remove="DTOs\RelatorioContatoDTO.cs" />
+    <Compile Remove="DTOs\UltimaModificacaoCicloDTO.cs" />
+    <Compile Remove="Enums\EStatusArquivo.cs" />
+    <Compile Remove="Enums\EStatusAlunoCiclo.cs" />
+    <Compile Remove="Enums\ETipoAtividade.cs" />
+    <Compile Remove="Interfaces\Repository\ICicloChecklistRepository.cs" />
+    <Compile Remove="Interfaces\Repository\IArquivoRepository.cs" />
+    <Compile Remove="Interfaces\Repository\ICicloRenovacaoRepository.cs" />
+    <Compile Remove="Interfaces\Repository\ICicloAlunoRepository.cs" />
+    <Compile Remove="Interfaces\Repository\IAlunoArquivoRepository.cs" />
+    <Compile Remove="Interfaces\Repository\IContatoRepository.cs" />
+    <Compile Remove="Interfaces\Repository\ILogAtividadeRepository.cs" />
+    <Compile Remove="Interfaces\Repository\IStatusArquivo.cs" />
+    <Compile Remove="Interfaces\Repository\ITipoArquivoRepository.cs" />
+    <Compile Remove="Interfaces\Repository\ITipoAlunoRepository.cs" />
+    <Compile Remove="Enums\EStatusClienteCiclo.cs" />
+    <Compile Remove="Interfaces\Repository\ICicloClienteRepository.cs" />
+    <Compile Remove="Interfaces\Repository\IClienteArquivoRepository.cs" />
+    <Compile Remove="Interfaces\Repository\ITipoClienteRepository.cs" />
+    <Compile Remove="Business\Ciclo_Cliente.cs" />
+    <Compile Remove="Business\Cliente_Arquivo.cs" />
+    <Compile Remove="Business\Tipo_Cliente.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Enums\" />
+  </ItemGroup>
+
+</Project>

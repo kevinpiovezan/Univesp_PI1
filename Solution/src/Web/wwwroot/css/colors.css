@@ -1,0 +1,65 @@
+﻿/* -------------------------------- [COLORS] -------------------------------- */
+:root {
+    /*colors*/
+    --clr-green: rgb(112,132,10);
+    --clr-green-secondary: rgb(189, 196, 22);
+    --clr-blue: rgb(0, 158, 190);
+    --clr-blue-secondary: rgb(132,207,230);
+    --clr-grey: rgb(89,89,89);
+    --clr-grey-secondary: rgb(223,218,214);
+    --clr-orange: rgb(240,125,0);
+    --clr-orange-secondary: rgb(249,176,0);
+    --clr-primary-bg: #d1dbe25e;
+    --clr-white: #fff;
+    /*fonts*/
+    --ff-primary: "Oswald", sans-serif;
+    --ff-secondary: "Indie Flower", cursive;
+    /**/
+    --transition: all 0.5s ease;
+    --spacing: 0.15rem;
+    --radius: 1rem;
+
+    --smartagro-blue: rgba(1,44,51);
+    --smartagro-blue-light: rgb(0, 109, 130);
+    --smartagro-green: rgb(135, 158, 65);
+    --smartagro-blue2: rgb(16, 173, 190);
+    --smartagro-orange: rgb(227, 127, 9);
+    --smartagro-blue-text: rgb(88, 169, 193);
+}
+
+.text-green-univesp {
+    color: #3c4705;
+}
+
+.title-blue {
+    color: var(--smartagro-blue);
+    font-weight: bold;
+}
+
+.bg-grey { 
+    background: var(--clr-grey);
+}
+
+.bg-green-univesp {
+    background-color: rgb(112,132,10) !important;
+}
+
+.bg-soft-white {
+    background-color: #ffffff99;
+}
+
+.bg-softer-white {
+    background-color: #ffffff44;
+}
+
+.green-univesp {
+    color: rgb(112,132,10);
+}
+
+.bg-light-green-univesp {
+    background-color: rgb(189, 196, 22);
+}
+
+.light-green-univesp {
+    color: rgb(189, 196, 22);
+}

@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore", "src\ApplicationCore\Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.csproj", "{CCD1A5F9-7F78-457B-BD8E-0A8B0C96368A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure", "src\Infrastructure\Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csproj", "{DF175EDE-972F-4EF2-A29B-2EC85C92B7FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Univesp.CaminhoDoMar.ProjetoIntegrador.Web", "src\Web\Univesp.CaminhoDoMar.ProjetoIntegrador.Web.csproj", "{531702A7-5B5B-4189-8693-483A70BC361C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCD1A5F9-7F78-457B-BD8E-0A8B0C96368A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCD1A5F9-7F78-457B-BD8E-0A8B0C96368A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCD1A5F9-7F78-457B-BD8E-0A8B0C96368A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCD1A5F9-7F78-457B-BD8E-0A8B0C96368A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF175EDE-972F-4EF2-A29B-2EC85C92B7FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF175EDE-972F-4EF2-A29B-2EC85C92B7FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF175EDE-972F-4EF2-A29B-2EC85C92B7FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF175EDE-972F-4EF2-A29B-2EC85C92B7FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{531702A7-5B5B-4189-8693-483A70BC361C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{531702A7-5B5B-4189-8693-483A70BC361C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{531702A7-5B5B-4189-8693-483A70BC361C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{531702A7-5B5B-4189-8693-483A70BC361C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

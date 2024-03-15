@@ -1,0 +1,19 @@
+﻿@model string;
+@{
+    ViewBag.Title = "Redirect";
+}
+
+<h4 class="pt-3 font-weight-bold text-center">
+    Redirecionando...
+    <span class="spinner-border text-success" role="status">
+        <span class="sr-only">Loading...</span>
+    </span>
+</h4>
+
+<script>
+    var link = `@Html.Raw(Model)`
+
+        setTimeout(() => {
+        window.location.replace(link);
+    }, 500)
+</script>

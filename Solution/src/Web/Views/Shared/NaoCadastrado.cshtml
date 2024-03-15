@@ -1,0 +1,31 @@
+﻿@{
+   ViewBag.Title = "Acesso não autorizado";
+}
+
+<h3 class="title text-center font-weight-bold p-2 dark-green">@ViewBag.Title</h3>
+
+<div class="text-center mx-3 wrapper justify-content-center px-3">
+    <div class="bg-soft-white p-3 shadow">
+        <h6 class="mb-3">O seu usuário ainda não foi cadastrado nessa aplicação.<br /> Por favor pedir ao administrador responsável que cadastre o seu usuário</h6>
+        <img class="access-denied d-block" src="/img/icons/access_denied.svg" />
+        <a href="/home" class="btn-univesp mt-4 d-inline-block">
+            Voltar à página inicial
+        </a>
+    </div>
+</div>
+
+<style>
+    .access-denied {
+        width: 85%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    .wrapper{
+        max-width: 1000px;
+        margin: 0 auto !important;
+    }
+
+    .btn-univesp {
+        border-radius:5px;
+    }
+</style>

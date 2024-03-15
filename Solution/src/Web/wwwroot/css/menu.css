@@ -1,0 +1,130 @@
+﻿/* -------------------------------- [MENU LATERAL] -------------------------------- */
+
+.sidebar-heading {
+    background: #808080;
+}
+
+.navbar {
+    display: block;
+    background: #808080;
+    padding: 6px 1rem !important;
+}
+
+#sidebarToggle {
+    padding: 0;
+    background: none;
+}
+
+#sidebar_btn {
+    font-size: 2rem;
+    color: white;
+    vertical-align: middle;
+}
+
+.footer {
+    background: var(--smartagro-blue);
+}
+
+#wrapper {
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.navbar {
+    padding: 0.25rem 1rem;
+}
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -16rem;
+    transition: margin 0.25s ease-out;
+    position: relative;
+}
+
+    #sidebar-wrapper .sidebar-heading {
+        padding: 0.6rem 1rem;
+        font-size: 1.1rem;
+    }
+
+    #sidebar-wrapper .list-group {
+        border-right: 1px solid #dee2e6 !important;
+        height: 100%;
+    }
+
+    #sidebar-wrapper .list-group {
+        width: 16rem;
+    }
+
+#page-content-wrapper {
+    flex-grow: 1;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
+
+.version {
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+    font-size: 10px;
+    color: #444;
+}
+
+/* || Menu Lateral Background */
+
+
+.nav {
+    padding: 0;
+    margin: 0 25px;
+    transition: 0.5s ease;
+    display: none;
+    font-family: 'PT Sans', sans-serif;
+    height: 450px;
+    width: 280px;
+}
+
+    .nav li {
+        list-style: none;
+        padding: 9px 0;
+    }
+
+        .nav li a {
+            font-size: 19px;
+            transition: 0.3s ease-out;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+            .nav li a:hover {
+                font-weight: bold;
+                transform: scale(1.08);
+            }
+
+/*            .nav li a:hover .main-menu-icon {
+                font-size: 2.25rem;
+            }*/
+
+.main-menu-icon {
+    font-size: 1.25rem;
+    margin-right: 6px;
+    vertical-align: middle;
+    color: black;
+    transition: 0.25s ease-out;
+}
+
+@media screen and (max-width:768px) {
+    #sidebar-wrapper {
+        margin-left: -100vw;
+    }
+
+    #sidebar-wrapper .list-group {
+        width: 100vw;
+    }
+
+    .move-menu-buttom {
+        position: relative;
+        right: 4rem;
+    }
+}

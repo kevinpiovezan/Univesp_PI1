@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#012c33">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>@ViewBag.Title</title>
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/logos/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/logos/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/logos/favicon-16x16.png">
+
+    <!-- CSS  -->
+    <link rel="stylesheet" href="~/css/utils.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" defer />
+    <link rel="stylesheet" href="~/css/base_estrutura.css" defer />
+    <link rel="stylesheet" href="~/css/menu.css" defer />
+    <link rel="stylesheet" href="~/css/colors.css" />
+    <link href="/lib/toastr/toastr.min.css" rel="stylesheet" defer />
+    <link href="~/lib/fontawesome-free-5.15.2-web/css/all.min.css" rel="stylesheet" defer> <!--Carrega os ícones do FontAwesome-->
+    <link rel="stylesheet" href="~/css/site.css" defer />
+    <!-- Pre-rendered Scripts -->
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js"></script>
+
+    <!-- Post-rendered Scripts -->
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/toastr/toastr.min.js"></script>
+    <script src="~/lib/bootbox/bootbox.all.min.js"></script>
+</head>
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Header Menu -->
+        <div class="bg-light" id="sidebar-wrapper">
+            <div class="sidebar-heading text-white font-weight-bold">
+                <a class="text-white" asp-controller="Home" asp-action="Index">
+                    UniCeu Caminho do Mar
+                </a>
+            </div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action bg-light" asp-controller="home" asp-action="Index">
+                    <i class="fas fa-home main-menu-icon fa-fw"></i>
+                    Home
+                </a>
+                <a class="list-group-item list-group-item-action bg-light" asp-controller="carga" asp-action="Index">
+                    <i class="fas fa-users main-menu-icon fa-fw"></i>
+                    Carga de Alunos
+                </a>
+                <a class="list-group-item list-group-item-action bg-light" href="/busca">
+                    <i class="fas fa-search main-menu-icon fa-fw"></i>
+                    Busca
+                </a>
+                @* <a class="list-group-item list-group-item-action bg-light" asp-controller="admin" asp-action="Index"> *@
+                @*     <i class="fas fa-user-tie main-menu-icon fa-fw"></i> *@
+                @*     Área Administrativa *@
+                @* </a> *@
+                @* <a class="list-group-item list-group-item-action bg-light" href="/logout"> *@
+                @*     <i class="fas fa-sign-out-alt main-menu-icon fa-fw"></i> *@
+                @*     Logout *@
+                @* </a> *@
+            </div>
+            <div class="version">Versão 03012024.1006</div>
+        </div>
+
+        <!-- Page Content-->
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light border-bottom">
+                <button class="btn" id="sidebarToggle">
+                    <i class="fas fa-bars" id="sidebar_btn"></i>
+                </button>
+                <a href="/">
+                    <img src="~/img/logos/univesp.png" class="logo crisp-image" alt="Logotipo da Univesp" />
+                </a>
+            </nav>
+
+            <!-- Render Body -->
+            <div class="main-container">
+                <main role="main" class="container">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+
+    </div>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+
+<script>
+    $("#sidebarToggle").click(function (e) { //precisa ficar ao final pra já ter carregado o elemento
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+        $("#sidebarToggle").toggleClass("move-menu-buttom");
+    });
+</script>

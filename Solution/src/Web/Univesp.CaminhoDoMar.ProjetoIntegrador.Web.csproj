@@ -1,0 +1,63 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+    <RootNamespace>Univesp.CaminhoDoMar.ProjetoIntegradorWeb</RootNamespace>
+	  <AssemblyName>uniceu</AssemblyName>
+  </PropertyGroup>
+
+<ItemGroup>
+	<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.22" />
+	<PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.1.21" />
+	<PackageReference Include="Microsoft.Identity.Web.UI" Version="1.23.1" />
+	<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.7" />
+	<PackageReference Include="WebPush-NetCore" Version="1.0.2" />
+</ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ApplicationCore\Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.csproj" />
+    <ProjectReference Include="..\Infrastructure\Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="appsettings.Development.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Remove="apphub-plt.json" />
+    <Content Remove="wwwroot\sw_rencad_01.js" />
+    <Content Remove="wwwroot\js\upload.js" />
+    <Content Remove="wwwroot\img\logos\univesp_logo.png" />
+    <Content Remove="wwwroot\img\logos\univesp_logo_white.png" />
+    <Content Remove="wwwroot\img\logos\logo_white-univesp__old.png" />
+    <Content Remove="wwwroot\img\logos\logo_white-univesp.png" />
+    <Content Remove="wwwroot\files\**" />
+    <Content Remove="Views\Relatorio\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Models\RelatorioModel.cs" />
+    <Compile Remove="Controllers\ArquivoController.cs" />
+    <Compile Remove="wwwroot\files\**" />
+    <Compile Remove="Views\Relatorio\**" />
+    <Compile Remove="Controllers\RelatorioController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="wwwroot\files\**" />
+    <EmbeddedResource Remove="Views\Relatorio\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="wwwroot\files\**" />
+    <None Remove="Views\Relatorio\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Busca\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="wwwroot\files\SL with SSO Connection.pdf" />
+    <_ContentIncludedByDefault Remove="Views\Relatorio\Index.cshtml" />
+  </ItemGroup>
+
+</Project>

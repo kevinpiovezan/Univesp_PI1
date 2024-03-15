@@ -1,0 +1,135 @@
+﻿table {
+    border-collapse: separate;
+    empty-cells: show;
+    width: 100%;
+    height: 100%;
+    font-size: .75rem;
+    overflow-y: auto;
+    border-bottom: #2a4000 solid 1px;
+    border-collapse: collapse;
+    border-radius: 5px;
+}
+
+.table-wrapper {
+    overflow-y: auto;
+    border-radius: 5px;
+    max-height: 300px
+}
+
+thead th {
+    position: sticky;
+    top: -1px;
+    z-index: 10;
+}
+
+th {
+    font-weight: bold;
+}
+
+th, td {
+    padding: .75rem;
+    font-size: 0.9rem;
+    word-wrap: break-word;
+}
+
+th {
+    font-size: 0.75rem;
+}
+
+tr {
+    min-height: 30px;
+}
+
+.table-univesp th {
+    background: #4c6000;
+    color: white;
+}
+
+.t-striped tr:nth-child(odd) {
+    background-color: #fffd;
+}
+
+.t-striped tr:nth-child(even) {
+    background-color: #fff6;
+}
+
+.table-univesp tfoot td {
+    border-top: 2px var(--clr-green) solid;
+    background: #4c6000;
+    font-weight: bold;
+    color: white;
+}
+
+#table-aprovadores {
+    min-width: 100%;
+    border-collapse: separate;
+    font-size: .9rem;
+}
+    #table-aprovadores th{
+        font-size: 1rem;
+    }
+
+    #table-aprovadores th, #table-aprovadores td {
+        padding: .75rem .25rem;
+    }
+
+    .table-aprovadores thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #4c6000;
+        border-top: none;
+    }
+
+    .table-aprovadores th {
+        border-left: none;
+        border-right: none;
+        background-color: transparent;
+    }
+
+#table-aprovadores td, #table-aprovadores tr {
+    border: none;
+    border-bottom: 1px #0003 solid;
+}
+
+#table-aprovadores-pdf {
+    min-width: 100%;
+    /*border-collapse: separate;*/
+    font-size: .9rem;
+}
+
+/*#region Table Green*/
+
+.table-green {
+    background: white;
+}
+
+.table-green thead {
+    background: #4c6000;
+    color: white;
+}
+
+    .table-green th {
+        background: #4c6000;
+        font-weight: bold;
+        padding: .75rem .5rem;
+        border: 0 !important;
+        font-size: 12px;
+    }
+
+    .table-green td {
+        border: 0 !important;
+        font-size: 12px;
+    }
+
+    .table-green tr:nth-child(odd) {
+        background: rgba(112,132,10, .09);
+    }
+
+    .table-green tr:nth-child(even) {
+        background: rgba(112,132,10, .02);
+    }
+
+    .table-green tr:hover {
+        background: rgba(112,132,10, .3);
+    }
+
+/*#endregion*/

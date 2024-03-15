@@ -1,0 +1,121 @@
+﻿.content-title {
+    position: relative;
+}
+
+    .content-title a {
+        position: absolute;
+        right: 0px;
+        top: 1rem;
+    }
+
+.form-group {
+    margin-bottom: 5px;
+}
+
+.btn-buscar {
+    align-self: flex-end;
+}
+
+    .btn-buscar button {
+        padding: 5px 10px;
+        width: 100%;
+        border-radius: 5px;
+    }
+
+.form-group label {
+    margin-left: 3px;
+    margin-bottom: 0;
+}
+
+#btn-buscar-loading {
+    height: 1.25rem;
+    width: 1.25rem;
+}
+
+ul {
+    margin-bottom: 0;
+}
+
+.btn-excel {
+    position: absolute;
+    right: 5px;
+    top: 0px;
+    z-index: 100;
+}
+
+    .btn-excel:focus {
+        outline: none;
+    }
+
+    .btn-excel img {
+        height: 48px;
+        width: 48px;
+        image-rendering: pixelated;
+    }
+
+#carregando-processos, #gerando-relatorio {
+    margin-top: 15px;
+    display: block;
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+#gerando-relatorio {
+    display: inline;
+}
+
+    #carregando-processos .spinner-border, #gerando-relatorio .spinner-border {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+
+/*TABLE*/
+
+/*#region table*/
+
+thead {
+    background: white;
+}
+
+.dataTables_wrapper {
+    padding: 0.75rem;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 8px #0002;
+    margin-bottom: 15px;
+}
+
+tr, th {
+    font-size: 0.8rem;
+}
+
+tbody tr:hover {
+    background-color: #ddd !important;
+    color: black;
+}
+
+    tbody tr:hover .sorting_1 {
+        background-color: #ddd !important;
+        color: black;
+    }
+
+    tbody tr:hover a {
+        color: black !important;
+    }
+@media screen and (max-width: 776px) {
+
+    #table_rush_length label {
+        font-size: 0.85rem;
+        position: relative;
+        left: -30px;
+    }
+
+
+    .content-title a {
+        position: static !important;
+        width: 200px;
+        margin: 0 auto 15px auto;
+    }
+}
+
+/*#endregion table*/

@@ -1,0 +1,404 @@
+﻿@model Univesp.CaminhoDoMar.ProjetoIntegrador.Web.Models.AlunoViewModel
+@{
+    ViewData["Title"] = @Model.Aluno.Nome;
+}
+
+<input hidden id="id_aluno" value="@Model.Aluno.Id" />
+
+
+<div class="content-title d-flex justify-content-between">
+    <button type="button" id="btn_voltar" onclick="location.href='/busca'" class="btn mr-3 my-1 mb-2 w-150 bg-blue-gradient shadow text-white font-weight-bold d-inline-block fas fa-arrow-left" style="background-color:#012C33;max-height:48px ;border-radius: 50%;font-size: 1.5rem;padding: 0.75rem;"></button>
+    <h4 class="page-title">
+        @Model.Aluno.Nome
+    </h4>
+    <div></div>
+</div>
+
+<section id="secao-dados-gerais" class="uniceu-section rounded-table mt-2">
+    <div class="d-flex justify-content-between">
+        <div class="d-flex">
+            <i class="fas fa-file-contract icon fa-fw" style="font-size:1.5rem"></i>
+            <h4 class="section-title">Dados Gerais</h4>
+        </div>
+        <i class="fas fa-pen icon fa-fw cursor-pointer" data-toggle="tooltip" title="Editar dados do aluno" onclick="$('#modalDadosAluno').modal();        
+        " style="font-size:1.5rem"></i>
+    </div>
+    <div class="section-content table-data">
+        <div class="bloco-dados-gerais">
+            @if (!String.IsNullOrEmpty(Model.Aluno.Nome_Social))
+            {
+                <div class="info-item">
+                    <p class="item-title">Nome Social:</p>
+                    <p class="item-data">@Model.Aluno.Nome_Social</p>
+                </div>
+            }
+            <div class="info-item">
+                <p class="item-title">Data de Nascimento:</p>
+                <p class="item-data">@Model.Aluno.Data_Nascimento.ToString("dd/MM/yyyy")</p>
+            </div>
+            <div class="info-item">
+                <p class="item-title">Cpf:</p>
+                <p class="item-data">@Model.Aluno.Cpf</p>
+            </div>
+            <div class="info-item">
+                <p class="item-title">Rg:</p>
+                <p class="item-data">@Model.Aluno.Rg</p>
+            </div>
+            <div class="info-item">
+                <p class="item-title">UF:</p>
+                <p class="item-data">@Model.Aluno.UF</p>
+            </div>
+            <div class="info-item">
+                <p class="item-title">Data de Emissão:</p>
+                <p class="item-data">@Model.Aluno.Data_Emissao.ToString("dd/MM/yyyy")</p>
+            </div>
+            <div class="info-item">
+                <p class="item-title">E-mail:</p>
+                <p class="item-data">@Model.Aluno.Email</p>
+            </div>
+            <div class="info-item">
+                <p class="item-title">Celular:</p>
+                <p class="item-data">@Model.Aluno.Celular</p>
+            </div>
+            @if (!String.IsNullOrEmpty(Model.Aluno.Tel_Fixo))
+            {
+                <div class="info-item">
+                    <p class="item-title">Telefone Fixo:</p>
+                    <p class="item-data">@Model.Aluno.Tel_Fixo</p>
+                </div>
+            }
+            <div class="info-item">
+                <p class="item-title">Endereço:</p>
+                <p class="item-data">@Model.Aluno.Endereco</p>
+            </div>
+            
+            <div class="info-item">
+                <p class="item-title">Cep:</p>
+                <p class="item-data">@Model.Aluno.Cep
+                </p>
+            </div>
+            <div class="info-item">
+                <p class="item-title">Gênero: </p>
+                <p class="item-data">@Model.Aluno.Genero</p>
+            </div>
+        </div>
+        <div class="bloco-dados-gerais">            
+            <div class="info-item">
+                <p class="item-title">Raça/Cor/Etnia: </p>
+                <p class="item-data">@Model.Aluno.Raca_Cor_Etnia</p>
+            </div>
+            <div class="info-item">
+                <p class="item-title">Cursou Ensino Médio em Escola Pública: </p>
+                <p class="item-data">@(Model.Aluno.EnsinoMedio_Escola_Publica ? "Sim" : "Não")</p>
+            </div>
+            <div class="info-item">
+                <p class="item-title">Já cursou alguma faculdade: </p>
+                <p class="item-data">@(Model.Aluno.Cursou_Faculdade ? "Sim" : "Não")</p>
+            </div>
+            @if (Model.Aluno.Cursou_Faculdade)
+            {
+                <div class="info-item">
+                    <p class="item-title">Se sim, quais cursos: </p>
+                    <p class="item-data">@Model.Aluno.Cursos</p>
+                </div>   
+            }
+            <div class="info-item">
+                <p class="item-title">É professor: </p>
+                <p class="item-data">@(Model.Aluno.Professor ? "Sim" : "Não")</p>
+            </div>
+            <div class="info-item">
+                <p class="item-title">É Servidor Público: </p>
+                <p class="item-data">@(Model.Aluno.Servidor_Publico ? "Sim" : "Não")</p>
+            </div>   
+            <div class="info-item">
+                <p class="item-title">Eixo escolhido na UniCeu: </p>
+                <p class="item-data">@Model.Aluno.Eixo</p>
+            </div>
+            <div class="info-item">
+                <p class="item-title">Cadastro Bilhete de estudante(SPTrans): </p>
+                <p class="item-data">@(Model.Aluno.Cadastro_SpTrans ? "Sim" : "Não")</p>
+            </div>
+            <div class="info-item">
+                <p class="item-title">Autorização de imagem: </p>
+                <p class="item-data">@(Model.Aluno.Autorizacao_Imagem ? "Sim" : "Não")</p>
+            </div>   
+            <div class="info-item">
+                <p class="item-title">Data da última atualização:</p>
+                <p class="item-data">@Model.Aluno.Ultima_Atualizacao.ToString("dd/MM/yyyy HH:mm")</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="separator"></div>
+
+<div class="separator"></div>
+
+<div id="modalDadosAluno" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document" style="max-width:600px !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Atualizar dados do aluno</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="section-content table-data">
+                    <div class="bloco-dados-gerais">
+                        <div class="info-item">
+                            <p class="item-title">Endereço:</p>
+                            <input type="text" id="editar_endereco" class="item-data form-control" value="@Model.Aluno.Endereco" />
+                        </div>
+                        <div class="info-item">
+                            <p class="item-title">Cep:</p>
+                            <input type="text" id="editar_cep" class="item-data form-control" value="@Model.Aluno.Cep" />
+                        </div>
+                        <div class="info-item">
+                            <p class="item-title">Nome:</p>
+                            <input type="text" id="editar_nome" class="item-data form-control" value="@Model.Aluno.Nome" />
+                        </div>
+                        <div class="info-item">
+                            <p class="item-title">Nome Social:</p>
+                            <input type="text" id="editar_nome_social" class="item-data form-control" value="@Model.Aluno.Nome_Social" />
+                        </div>
+                        <div class="info-item">
+                            <p class="item-title">Celular:</p>
+                            <input type="text" id="editar_celular" class="item-data form-control" value="@Model.Aluno.Celular" />
+                        </div>
+                        <div class="info-item">
+                            <p class="item-title">Telefone Fixo:</p>
+                            <input type="text" id="editar_tel_fixo" class="item-data form-control" value="@Model.Aluno.Tel_Fixo" />
+                        </div>
+                        <div class="info-item">
+                            <p class="item-title">Email: </p>
+                            <input type="text" id="editar_email" class="item-data form-control" value="@Model.Aluno.Email" />
+                        </div>
+                        @* <div class="info-item"> *@
+                        @*     <p class="item-title">É professor:</p> *@
+                        @*     <select class="form-control" id="editar_professor"> *@
+                        @*         <option value="Sim">Sim</option> *@
+                        @*         <option value="Não">Não</option> *@
+                        @*     </select> *@
+                        @* </div> *@
+                        @if (!Model.Aluno.Autorizacao_Imagem)
+                        {
+                            <div class="info-item">
+                                <p class="item-title">Autorização de imagem:</p>
+                                <select class="form-control" id="editar_imagem">
+                                    <option value="Sim">Sim</option>
+                                    <option value="Não">Não</option>
+                                </select>
+                            </div>   
+                        }
+                        else
+                        {
+                            <div class="info-item">
+                                <p class="item-title">Autorização de imagem:</p>
+                                <select class="form-control" id="editar_imagem" disabled>
+                                    <option value="Sim" selected>Sim</option>
+                                    <option value="Não">Não</option>
+                                </select>
+                            </div>
+                        }
+                        @if (!Model.Aluno.Cadastro_SpTrans)
+                        {
+                            <div class="info-item">
+                                <p class="item-title">Cadastro de bilhete de estudante:</p>
+                                <select class="form-control" id="editar_sptrans">
+                                    <option value="Sim">Sim</option>
+                                    <option value="Não">Não</option>
+                                </select>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="info-item">
+                                <p class="item-title">Cadastro de bilhete de estudante:</p>
+                                <select class="form-control" id="editar_sptrans" disabled>
+                                    <option value="Sim" selected>Sim</option>
+                                    <option value="Não">Não</option>
+                                </select>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <button onclick="editarAluno();" class="btn btn-red d-block mx-auto my-1">Salvar dados do aluno</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .uniceu-section {
+        margin: 1rem 0 .75rem 0;
+    }
+    
+
+    /*#region Dados Gerais*/
+    .section-content {
+        padding: 0 2rem;
+        position: relative;
+    }
+   
+
+    .uniceu-section .table-data {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        position: relative;
+    }
+
+    .info-item {
+        flex: 0 0 100%;
+        margin-bottom: 5px;
+    }
+
+    .bloco-dados-gerais {
+        flex-basis: calc(50% - 15px);
+    }
+
+    .uniceu-section .section-content {
+        padding: 0 1rem;
+    }
+
+    .item-title {
+        display: inline;
+        font-weight: bold;
+        color: var(--smartagro-blue);
+        margin-right: 5px;
+    }
+
+    .item-data {
+        display: inline;
+        word-break: break-all;
+    }
+
+    .abas h5{
+        white-space: nowrap;
+    }
+
+    /*#endregion*/
+
+    .rounded-table {
+        border-radius: 5px 5px 0 0;
+    }
+
+    .modal-header {
+        padding: 0.35rem 1rem;
+    }
+
+    .modal-title {
+        font-size: 1.25rem;
+    }
+
+    .modal-header .close {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        top: 3px;
+    }
+
+    
+    .dataTables_wrapper {
+        box-shadow: none;
+    }
+
+   
+    .modal-content {
+        overflow-y:auto;
+        overflow-x: hidden;
+    }
+
+    .btn-excel {
+        position: absolute;
+        right: 5px;
+        top: -10px;
+        z-index: 100;
+    }
+
+        .btn-excel:focus {
+            outline: none;
+        }
+
+        .btn-excel img {
+            height: 48px;
+            width: 48px;
+            image-rendering: pixelated;
+        }
+
+    @@media screen and (max-width: 776px) {
+        .info-item {
+            flex: 0 0 100%;
+        }
+
+        .bloco-dados-gerais {
+            flex-basis: 100%;
+        }
+    }
+</style>
+
+<script src="~/lib/data-tables/datatables.js"></script>
+<link href="~/lib/data-tables/datatables.css" rel="stylesheet" />
+
+<script>    
+    let id_aluno = parseInt(document.getElementById('id_aluno').value);
+
+    const editarAluno = () => {
+        let endereco = $("#editar_endereco").val();
+        let cep = $("#editar_cep").val();
+        let nome = $("#editar_nome").val();
+        let nome_Social = $("#editar_nome_social").val();
+        let celular = $("#editar_celular").val();
+        let tel_fixo = $("#editar_tel_fixo").val();
+        // let professor = $("#editar_professor").val() === "Sim" ? true : false;
+        let email = $("#editar_email").val();
+        let autorizacao_imagem = $("#editar_imagem").val() === "Sim" ? true : false;
+        let cadastro_SpTrans = $("#editar_sptrans").val() === "Sim" ? true : false;        
+        // console.log(professor)
+        console.log(autorizacao_imagem)
+        console.log(cadastro_SpTrans)        
+        
+        let data = {
+            endereco: endereco,
+            cep: cep,
+            nome: nome,
+            nome_Social: nome_Social,
+            celular: celular,
+            tel_fixo: tel_fixo,
+            // professor: professor,
+            email: email,
+            autorizacao_imagem: autorizacao_imagem,
+            cadastro_SpTrans: cadastro_SpTrans,
+        }
+        console.log(data);
+        const id_aluno = parseInt(document.getElementById('id_aluno').value);
+        toggleLoading();
+                $.ajax({
+                    type: "POST",
+                    url: `/aluno/editar/${id_aluno}`,
+                    dataType: "json",
+                    contentType: "application/json",
+                    data: JSON.stringify(data),
+                }).done(function (data) {
+                    toggleLoading();
+                    toastr.success("Dados do aluno alterados com sucesso");
+                    location.reload();
+                }).fail(function (xhr, status, error) {
+                    toggleLoading()
+                    toastr.error(xhr.responseText);
+                });
+    }    
+
+    $(function () {
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $('[data-toggle="popover"]').popover({ html: true });
+       
+    })   
+
+    $(document).ready(() => {
+      
+    })
+</script>

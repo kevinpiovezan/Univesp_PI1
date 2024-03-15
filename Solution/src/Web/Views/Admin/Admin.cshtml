@@ -1,0 +1,721 @@
+﻿@model Univesp.CaminhoDoMar.ProjetoIntegradorWeb.Models.AdminModel
+@{
+    ViewData["Title"] = "Área Administrativa";
+}
+
+<link rel="stylesheet" href="~/css/table.css"/>
+
+<div class="py-3">
+
+    <div id="container-admin" class="shadow">
+
+        <div id="coluna-abas">
+            <div id="aba-usuarios" class="aba">Usuários</div>
+        </div>
+
+        <div id="coluna-conteudo">
+
+            <div id="conteudo-usuarios" class="conteudo-aba d-none">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex align-items-baseline">
+                        <label for="txt-filtro-usuarios">Filtrar Usuários :</label>
+                        <input type="text" style="width: 300px;" class="d-inline-block searchTerm" id="txt-filtro-usuarios">
+                    </div>
+                    <img class="cursor-pointer" data-toggle="tooltip" title="Baixar relatório dos usuários" onclick="DownloadRelatorioUsuarios()" src="/img/icons/excel.png" width="64">
+                </div>
+                <p>
+                    Usuários
+                </p>
+                
+                <div id="exibicao-usuarios">
+                    <table id='valores_usuarios' style='width: 100%' class='table table-striped tabela-exibicao'>
+                        <thead class='bg-green-univesp text-white'>
+                        <tr class='linha-header'><th>Nome</th><th>Email</th></tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var user in Model.Usuarios)
+                            {
+                                <tr id="usuario-@user.Id">
+                                    <td class='valor'>@user.Nome</td>
+                                    <td class='valor'>@user.Email</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal fade" id="criticasPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Críticas</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="criticas-wrapper" class="modal-body pt-0">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="alteracoesPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Confirmar alterações?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="alteracoes-wrapper" class="modal-body pt-0">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="cargaAlunosConfirmar()" data-dismiss="modal">Confirmar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let dadosCarga = null;
+    //#region "Estilo bootstrap"
+
+    $("input[type=text]").addClass("form-control");
+    $("select").addClass("form-control");
+
+    //#endregion
+
+    //#region "Navegação das abas"
+
+    $(".aba").click(function () {
+
+        $(".aba-ativa").removeClass("aba-ativa");
+        $(this).addClass("aba-ativa");
+
+        var id_conteudo_aba = $(this).prop("id").toString().replace("aba", "conteudo");
+
+        $(".conteudo-aba").addClass("d-none");
+        $("#" + id_conteudo_aba).removeClass("d-none");
+
+        localStorage.setItem("aba_ativa", $(this).prop("id"));
+
+        if (id_conteudo_aba.replace('conteudo-', '') === "clientes") {
+            document.getElementById('sel_ciclo_clientes').value = localStorage.getItem("ciclo");
+            carregaAlunos();
+        }
+
+        if (id_conteudo_aba.replace('conteudo-', '') === "ciclos") {
+
+            carregarCiclos();
+        }
+
+        if (id_conteudo_aba.replace('conteudo-', '') === "checklist") {
+            document.getElementById('sel_ciclo_checklist').value = localStorage.getItem("ciclo");
+            carregaChecklist();
+        }
+
+    });
+
+    //#endregion
+
+    //#region Ciclos
+
+    const carregarCiclos = () => {
+        $.ajax({
+            type: "POST",
+            url: "/obter-ciclos",
+            dataType: "json",
+            contentType: "application/json"
+        }).done(function (data) {
+
+            var htmlLista = "<table id='valores_ciclo' style='width: 100%' class='table table-striped tabela-exibicao'><thead class='bg-green-univesp text-white'><tr><th>Nome</th><th>Data do cadastro</th><th>Status</th></tr></thead>";
+
+            for (let entry of data) {
+                htmlLista += "<tr><td class='valor'>" + entry.nome + "</td>";
+                htmlLista += "<td class='valor'>" + entry.data_String + "</td>";
+                if (entry.ativo) {
+                    htmlLista += `<td><i onclick="ativarCiclo(${entry.id})" class="fas fa-power-off mr-2 btn p-0" style="color: green; font-size: 1.25rem;"></i> ATIVO </td>`;
+                } else {
+                    htmlLista += `<td><i onclick="ativarCiclo(${entry.id})" class="fas fa-power-off mr-2 btn p-0" style="color: #0002; font-size: 1.25rem;"></i> DESATIVADO</td>`;
+                }
+                htmlLista += "</tr>";
+            }
+
+            htmlLista += "</table>";
+
+            $("#exibicao-ciclos").html(htmlLista);
+            //document.getElementById('info-ultima-alteracao-lista').innerText = `Última alteração por: ${data.usuario} em ${data.data_Ultima_Alteracao}`;
+
+        }).fail(function (xhr, status, error) {
+            toggleLoading();
+            if (xhr.responseText != "") {
+                toastr.error(xhr.responseText);
+            }
+            toastr.error('Não foi posssível obter os ciclos.');
+        });
+    }
+
+    const cadastrarCiclo = () => {
+        nome_ciclo = document.getElementById('nome_ciclo');
+
+        if (nome_ciclo.value === "") {
+            return toastr.error('Nome do ciclo não pode ser vazio');
+        } 
+
+        toggleLoading();
+        $.ajax({
+            type: "POST",
+            url: "/adicionar-ciclo",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(nome_ciclo.value)
+        }).done(function (data) {
+            toggleLoading();
+            toastr.success("ciclo cadastrado com sucesso!");
+            window.location.reload();
+        }).fail(function (xhr, status, error) {
+            toggleLoading();
+            if (xhr.responseText != "") {
+                toastr.error(xhr.responseText);
+            }
+            toastr.error('Não foi posssível cadastrar o ciclo.');
+            console.log('Erro obtendo lista: ' + error);
+            console.log(`Code: ${xhr} Status: ${status}`);
+        });
+    }
+
+    const ativarCiclo = (idCiclo) => {
+        toggleLoading();
+        $.ajax({
+            type: "POST",
+            url: "/ativar-ciclo",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(idCiclo)
+        }).done(function (data) {
+            toggleLoading();
+            carregarCiclos();
+        }).fail(function (xhr, status, error) {
+            toggleLoading();
+            if (xhr.responseText != "") {
+                toastr.error(xhr.responseText);
+            }
+            toastr.error('Não foi posssível atualizar o ciclo.');
+            console.log('Erro obtendo lista: ' + error);
+            console.log(`Code: ${xhr} Status: ${status}`);
+        });
+    }
+    //#endregion
+
+    // //#region Alunos
+    // const carregaAlunos = () => {
+    //     localStorage.setItem("ciclo", parseInt($("#sel_ciclo_clientes").val()));
+    //     toggleLoading();
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "/obter-clientes",
+    //         dataType: "json",
+    //         contentType: "application/json",
+    //         data: JSON.stringify(parseInt($("#sel_ciclo_clientes").val()))
+    //     }).done(function (data) {
+    //         toggleLoading();
+    //         if (data.ultima_modificacao != null) {
+    //             ultima_alteracao = document.getElementById('info-ultima-alteracao-clientes');
+    //
+    //             ultima_alteracao.style.display = "block";
+    //             ultima_alteracao.innerText =
+    //                 `Última modificação por ${data.ultima_modificacao.usuario_Alteracao_Alunos.nome} às ${data.ultima_modificacao.data_Alteracao_Alunos}`;
+    //         }
+    //
+    //         data = data.clientes;
+    //         var htmlLista = "<table id='valores_clientes' style='width: 100%' class='table mb-0 table-striped tabela-exibicao table-layout-auto'><thead class='bg-green-univesp text-white'><tr><th>Prioridade Crédito</th><th>BPId</th><th>Cod.SAP</th><th>Aluno</th><th>CPF/CNPJ</th><th>Tipo</th><th>Unidade</th><th>Regional</th><th>RTV Responsável</th><th>Status Aluno</th><th>Grupo</th><th>Case</th><th>Telefone</th><th>Email</th><th>Inclusão</th></tr></thead>";
+    //         for (let entry of data) {
+    //
+    //             htmlLista += "<tr><td>" + entry.prioridade_Credito + "</td>";
+    //             htmlLista += "<td>" + entry.bpid + "</td>";
+    //             htmlLista += "<td>" + entry.cod_Sap+ "</td>";
+    //             htmlLista += "<td>" + entry.nome + "</td>";
+    //             htmlLista += "<td>" + entry.cpF_CNPJ  + "</td>";
+    //             htmlLista += "<td>" + entry.tipo_String + "</td>";
+    //             htmlLista += "<td>" + entry.unidade + "</td>";
+    //             htmlLista += "<td>" + entry.regional + "</td>";
+    //             htmlLista += "<td>" + entry.rtV_Responsavel + "</td>";
+    //             htmlLista += "<td>" + (entry.politica ? "POLÍTICA" : "FORA DA POLÍTICA") + "</td>";
+    //             htmlLista += "<td>" + (entry.grupo == null ? "" : entry.grupo)+ "</td>";
+    //             htmlLista += "<td>" + (entry.case == null ? "" : entry.case)+ "</td>";
+    //             htmlLista += "<td>" + (entry.telefone == null ? "" : entry.telefone)+ "</td>";
+    //             htmlLista += "<td>" + (entry.email == null ? "" : entry.email)+ "</td>";
+    //             htmlLista += "<td>" + (entry.inclusao == true ? "SIM" : "NÂO")+ "</td>";
+    //             htmlLista += "</tr>";
+    //         }
+    //
+    //         htmlLista += "</table>";
+    //
+    //         $("#exibicao-clientes").html(htmlLista);
+    //         //document.getElementById('info-ultima-alteracao-lista').innerText = `Última alteração por: ${data.usuario} em ${data.data_Ultima_Alteracao}`;
+    //
+    //     }).fail(function (xhr, status, error) {
+    //         toggleLoading();
+    //         if (xhr.responseText != "") {
+    //             toastr.error(xhr.responseText);
+    //         }
+    //         toastr.error('Não foi posssível obter os ciclos.');
+    //     });
+    // }
+    //
+    // const baixarAlunos = () => {
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "/baixar-clientes",
+    //         contentType: "application/json",
+    //         data: JSON.stringify(parseInt($("#sel_ciclo_clientes").val()))
+    //     }).done(function (data) {
+    //         if (!data) {
+    //             alert("Nenhuma cliente encontrado para esse ciclo.");
+    //         } else {
+    //             var link = document.createElement("a");
+    //             document.body.appendChild(link);
+    //             link.setAttribute("type", "hidden");
+    //             link.href = "data:text/plain;base64," + data;
+    //             link.download = `clientes.xlsx`;
+    //             link.click();
+    //             document.body.removeChild(link);
+    //         }
+    //     }).fail(function (xhr, status, error) {
+    //         alert(error);
+    //     });
+    // }
+    //
+    // const cargaAlunos = (dados) => {
+    //     dados.Id_Ciclo = parseInt($("#sel_ciclo_clientes").val());
+    //     dados.Tipo_Atualizacao = "Carga";        
+    //     dados.tipo_carga = document.querySelector('input[name="tipo_carga"]:checked').value;
+    //
+    //     if(dados.tipo_carga == null)
+    //                 return toastr.error("Por favor selecionar o tipo de carga");
+    //     if (dados.Id_Ciclo == null || isNaN(dados.Id_Ciclo) || dados.Id_Ciclo == 0)
+    //         return toastr.error("Por favor selecionar um ciclo");
+    //
+    //     dadosCarga = dados;
+    //     toggleLoading();
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "/carga-clientes",
+    //         contentType: "application/json",
+    //         data: JSON.stringify(dados)
+    //     }).done(function (data) {
+    //         toggleLoading();
+    //
+    //         if (data.criticas != null && data.criticas.length > 0) {
+    //             if (data.criticas[0].criticas[0].includes("já está cadastrado")) {
+    //                 mostraAlteracoesPopup(data.criticas);
+    //             } else {
+    //                 mostraCriticasPopup(data.criticas)
+    //             }
+    //         }
+    //         else {
+    //             toastr.success("Carga feita com sucesso!");
+    //             carregaAlunos();
+    //         }
+    //
+    //     }).fail(function (xhr, status, error) {
+    //         toggleLoading();
+    //
+    //         alert(error);
+    //     });
+    // }
+    //
+    // const cargaAlunosConfirmar = () => {
+    //     dadosCarga.confirmado = true;
+    //     cargaAlunos(dadosCarga);
+    // }
+    //
+    // const mostraCriticasPopup = (criticas) => {
+    //     let criticas_wrapper = document.getElementById('criticas-wrapper');
+    //     criticas_wrapper.innerHTML = "";
+    //     for (let critica of criticas) {
+    //
+    //         if (critica.linha != 0)
+    //             criticas_wrapper.innerHTML += `<h6 class="text-center font-weight-bold mt-3" style="color:red;">Erro(s) na linha ${critica.linha}:</h6>`;
+    //         else
+    //             criticas_wrapper.innerHTML += `<h6 class="text-center font-weight-bold mt-3" style="color:red;">Erro:</h6>`;
+    //
+    //         for (let erro of critica.criticas) {
+    //             criticas_wrapper.innerHTML += '- ' + erro + ';</br>';
+    //         }
+    //     }
+    //     $("#criticasPopup").modal();
+    // }
+    //
+    // const mostraAlteracoesPopup = (criticas) => {
+    //     let criticas_wrapper = document.getElementById('alteracoes-wrapper');
+    //     criticas_wrapper.innerHTML = "";
+    //     for (let critica of criticas) {
+    //
+    //         if (critica.linha != 0)
+    //             criticas_wrapper.innerHTML += `<h6 class="text-center font-weight-bold mt-3" style="color:red;">Erro(s) na linha ${critica.linha}:</h6>`;
+    //         else
+    //             criticas_wrapper.innerHTML += `<h6 class="text-center font-weight-bold mt-3" style="color:red;">Atenção:</h6>`;
+    //
+    //         for (let erro of critica.criticas) {
+    //             criticas_wrapper.innerHTML += '- ' + erro + ';</br>';
+    //         }
+    //
+    //         criticas_wrapper.innerHTML += `<h6 class="text-center mt-3" style="color:red;">Se você seguir com a carga, os dados desses clientes serão atualizados com as informações presentes no excel anexado:</h6>`;
+    //
+    //     }
+    //     $("#alteracoesPopup").modal();
+    // }
+    //
+    // //#endregion
+
+    //#region Checklist
+    const carregaChecklist = () => {
+        localStorage.setItem("ciclo", parseInt($("#sel_ciclo_checklist").val()));
+        toggleLoading();
+        document.querySelectorAll('.check-checklist').forEach(c => c.checked = false);
+
+        $.ajax({
+            type: "POST",
+            url: "/obter-checklist",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(parseInt($("#sel_ciclo_checklist").val()))
+        }).done(function (data) {
+            toggleLoading();
+            if (data.ultima_modificacao != null) {
+                ultima_alteracao = document.getElementById('info-ultima-alteracao-checklist');
+
+                ultima_alteracao.style.display = "block";
+                ultima_alteracao.innerText =
+                    `Última modificação por ${data.ultima_modificacao.usuario_Alteracao_Checklist.nome} às ${data.ultima_modificacao.data_Alteracao_Checklist}`;
+            }
+
+            data = data.checklist;
+            for (i of data) {
+                if (i.id_Tipo_Aluno == 1)
+                    document.getElementById('arquivo_PF_' + i.id_Tipo_Arquivo).value = i.valor;
+                if (i.id_Tipo_Aluno == 2)
+                    document.getElementById('arquivo_PJ_' + i.id_Tipo_Arquivo).value = i.valor;
+                if (i.id_Tipo_Aluno == 3)
+                    document.getElementById('arquivo_coop_' + i.id_Tipo_Arquivo).value = i.valor;
+            }
+        }).fail(function (xhr, status, error) {
+            toggleLoading();
+            if (xhr.responseText != "") {
+                toastr.error(xhr.responseText);
+            }
+            toastr.error('Não foi posssível obter o checklist.');
+        });
+    }
+
+    const atualizaChecklist = (elem, tipo_empresa, idTipoArquivo) => {
+        dados = {
+            Id_Ciclo: parseInt($("#sel_ciclo_checklist").val()),
+            Id_Tipo_Arquivo: parseInt(idTipoArquivo),
+            Tipo_Empresa: tipo_empresa,
+            Valor: elem.value,
+        };
+
+        if (dados.Id_Ciclo == null || isNaN(dados.Id_Ciclo)) {
+            elem.checked = !elem.checked;
+            return toastr.error("Por favor selecionar um ciclo");
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/alterar-checklist",
+            contentType: "application/json",
+            data: JSON.stringify(dados)
+        }).done(function (data) {
+            toastr.success("Checklist atualizado com sucesso");
+        }).fail(function (xhr, status, error) {
+            alert(error);
+        });
+    }
+
+    //#endregion
+
+    //#region "Upload de planilha"
+
+    const formatosValidos = arquivo => {
+        return /\.(xls|xlsx)$/i.test(arquivo.name);
+    }
+
+    async function anexarArquivos(input) {
+
+        var arquivos = input.files;
+
+        if (arquivos) {
+            for (const arquivo of arquivos) {
+                await lerArquivoAsync(arquivo);
+            }
+        }
+
+        document.getElementById('anexador').value = "";
+    }
+
+    function lerArquivoAsync(arquivo) {
+
+        if (formatosValidos(arquivo)) {
+
+            let reader = new FileReader();
+
+            reader.onload = () => {
+                var dadosArquivo = {
+                    'Id': parseInt($("#sel_tabela").val()),
+                    'ArquivoBase64': reader.result,
+                };
+
+                cargaAlunos(dadosArquivo);
+            };
+
+            reader.readAsDataURL(arquivo);
+
+        } else {
+            alert(FORMATO_INVALIDO_MSG);
+            return;
+        }
+    }
+
+    const FORMATO_INVALIDO_MSG = 'Formato de arquivo inválido.';
+    const ARQUIVO_NAO_INSERIDO_MSG = 'Não foi possível inserir o arquivo.';
+    const ARQUIVO_NAO_OBTIDO_MSG = 'Não foi possível obter os arquivos.';
+
+    //#endregion
+
+
+    $(document).ready(function () {
+        if (localStorage.getItem("aba_ativa")) {
+            $("#" + localStorage.getItem("aba_ativa")).trigger("click");
+        }
+    });
+
+    $('#txt-filtro-usuarios').keyup(function () {
+        filtrarUsuarios($(this).val());
+    });
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+
+        $('#alteracoesPopup').on('hidden.bs.modal', function (e) {
+            dadosCarga = null;
+        })
+    })
+    function filtrarUsuarios(_filter) {
+    
+            $("#exibicao-usuarios table").removeClass("table-striped");
+    
+            $('#exibicao-usuarios table tr:not(.linha-header)').each(function () {
+    
+                if ($(this).html().toString().toUpperCase().includes(_filter.toUpperCase()) || _filter == '') {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+    
+            });
+    }    
+    const DownloadRelatorioUsuarios = () => 
+    {        
+        toggleLoading();
+        $.ajax({
+           type: "POST",
+           url: "/admin/baixar-usuarios",           
+       }).done(function (data) {           
+           toggleLoading();
+           var link = document.createElement("a");
+           document.body.appendChild(link);
+           link.setAttribute("type", "hidden");
+           link.href = "data:text/plain;base64," + data;
+           link.download = `Relatorio_Usuarios.xlsx`;
+           link.click();
+           document.body.removeChild(link);
+    
+       }).fail(function (xhr, status, error) {
+           toggleLoading();
+           toastr.error(`Não foi possivel baixar o arquivo!`);
+           toastr.error(xhr.responseText);
+           console.log('Erro atualizando company code: ' + error);
+           console.log(`Code: ${xhr} Status: ${status}`);
+       })
+    }
+</script>
+
+<style>
+    .univesp-green {
+        color: var(--clr-green) !important;
+    }
+    .criticas-wrapper {
+        max-height: 400px;
+        overflow: auto;
+    }
+    .table-layout-auto {
+        table-layout: auto;
+    }
+
+    table {
+        table-layout: fixed;
+    }
+
+    td {
+        max-width: 600px;
+    }
+
+    #container-admin {
+        border: 1px solid #aaa;
+        height: 700px;
+        background: #ffffffcc;
+        display: flex;
+    }
+
+    #coluna-abas {
+        background-color: rgba(1,44,51, .7);
+        color: white;
+        cursor: pointer;
+        vertical-align: top;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+        width: 140px;
+    }
+
+        #coluna-abas .aba {
+            padding: 10px;
+            height: 50px;
+        }
+
+        #coluna-abas .aba-ativa {
+            background-color: white;
+            color: var(--smartagro-blue);
+            font-weight: bold;
+        }
+
+    .modal-body {
+        max-height: 450px;
+        overflow: auto;
+    }
+
+    #coluna-conteudo {
+        padding: 20px;
+        vertical-align: top;
+        flex-grow: 1;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    @@media only screen and (max-width: 768px) {
+        #container-admin {
+            flex-direction: column;
+        }
+
+        #coluna-abas {
+            width: 100%;
+            display: flex;
+            overflow: scroll;
+        }
+
+        #coluna-conteudo {
+            padding: 10px;
+        }
+    }
+
+
+    #exibicao-lista, #exibicao-tabela, #exibicao-usuarios, #exibicao-versoes, .exibicao {
+        overflow-y: auto;
+        max-height: 350px;
+    }
+
+    .conteudo-aba {
+        width: 100%;
+    }
+
+    .tabela-exibicao {
+        position: relative;
+    }
+
+        .tabela-exibicao thead th {
+            position: sticky;
+            top: -1px;
+            z-index: 10;
+            min-width: 120px;
+        }
+
+        .tabela-exibicao button {
+            z-index: 0;
+        }
+
+    .excluir-valor-lista {
+        width: 50px;
+        display: block;
+        margin: auto;
+        float: none;
+    }
+
+    table th {
+        background-color: var(--smartagro-blue);
+        color: white;
+    }
+
+    .btn-usuario {
+        font-size: 1.25rem;
+        color: #9999;
+        cursor: pointer;
+    }
+
+    .titulo-usuarios {
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: #444;
+    }
+
+    #exibicao-usuarios, #exibicao-tabela, #exibicao-lista {
+        border-radius: 8px;
+    }
+
+    .cc-usuario {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: #2222 1px solid;
+        padding: 10px 0;
+    }
+
+    .btn-icone-watcher {
+        color: #3c4705;
+        opacity: .5;
+        cursor: pointer;
+    }
+
+    .usuario-watcher {
+        opacity: 1;
+    }
+
+    .tabela-exibicao thead th {
+        white-space: nowrap !important;
+    }
+
+    .btn-icone {
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    .usuario-desativado {
+        color: gray;
+    }
+
+    .tooltip {
+        pointer-events: none;
+    }
+
+</style>

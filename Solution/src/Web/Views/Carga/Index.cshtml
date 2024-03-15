@@ -1,0 +1,515 @@
+﻿@model Univesp.CaminhoDoMar.ProjetoIntegradorWeb.Models.AdminModel
+@{
+    ViewData["Title"] = "Carga de Alunos";
+}
+
+<link rel="stylesheet" href="~/css/table.css"/>
+
+<div class="content-title">
+    <h4 class="page-title">Carga de Alunos</h4>
+</div>
+
+<div class="py-3">
+
+    <div id="carga-alunos">
+                        <div id="exibicao-alunos" class="exibicao" style="overflow:auto">
+                            <table id="valores_tabela" style="width: 100%" class="table table-striped tabela-exibicao table-layout-auto">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>CPF</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+        
+                        <div class="my-2" id="info-ultima-alteracao-alunos"></div>
+        
+                        <p id="atualizar-tabela" class="mt-3 ml-3 row">
+                            <input class="anexador mb-3" type="file" multiple="multiple" id="anexador" style="display: none"
+                                   onchange="anexarArquivos(this)">
+        
+                            <label for="anexador" class="btn mb-2 col-2 w-150 btn-red align-self-baseline rounded-pill shadow text-white font-weight-bold d-inline-block"
+                                   style="cursor:pointer">
+                                Atualizar Dados
+                            </label>
+        
+                            <button type="button" class="btn mb-2 col-2 ml-3 w-150 btn-red align-self-baseline rounded-pill shadow text-white font-weight-bold d-inline-block"
+                                    style="cursor:pointer" onclick="baixarAlunos();">
+                                Baixar Dados
+                            </button>
+                        </p>
+        
+                    </div>
+
+</div>
+
+<div class="modal fade" id="criticasPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Críticas</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="criticas-wrapper" class="modal-body pt-0">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="alteracoesPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Confirmar alterações?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="alteracoes-wrapper" class="modal-body pt-0">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="cargaAlunosConfirmar()" data-dismiss="modal">Confirmar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    let dadosCarga = null;
+    //#region "Estilo bootstrap"
+
+    $("input[type=text]").addClass("form-control");
+    $("select").addClass("form-control");
+
+    //#endregion
+
+    //#region Alunos
+    const carregaAlunos = () => {
+        toggleLoading();
+        $.ajax({
+            type: "POST",
+            url: "/carga/obter-alunos",
+            dataType: "json",
+            contentType: "application/json",
+        }).done(function (data) {
+            toggleLoading();
+            if (data.ultima_modificacao != null) {
+                ultima_alteracao = document.getElementById('info-ultima-alteracao-alunos');
+
+                ultima_alteracao.style.display = "block";
+                ultima_alteracao.innerText =
+                    `Última modificação por ${data.ultima_modificacao.usuario_Alteracao_Alunos.nome} às ${data.ultima_modificacao.data_Alteracao_Alunos}`;
+            }
+
+            data = data.alunos;
+            var htmlLista = `<table id='valores_alunos' style='width: 100%' class='table mb-0 table-striped tabela-exibicao table-layout-auto'>
+                                <thead class='bg-green-univesp text-white'>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Nome Social</th>
+                                        <th>Data de Nascimento</th>
+                                        <th>CPF</th>
+                                        <th>RG</th>
+                                        <th>UF</th>
+                                        <th>Data de Emissão</th>
+                                        <th>E-mail pessoal</th>
+                                        <th>Endereço</th>
+                                        <th>Cep</th>
+                                        <th>Celular</th>
+                                        <th>Telefone Fixo</th>
+                                        <th>Gênero</th>
+                                        <th>Raça/Cor/Etnia</th>
+                                        <th>Cursou Ensino Médio em Escola Pública?</th>
+                                        <th>Já cursou alguma faculdade?</th>
+                                        <th>Se sim, quais cursos?</th>
+                                        <th>É professor?</th>
+                                        <th>É Servidor Público?</th>
+                                        <th>Curso Escolhido na Uniceu:</th>
+                                        <th>Cadastro Bilhete Estudante(SPTrans):</th>
+                                        <th>Autorização de imagem:</th>
+                                    </tr>
+                                </thead>`;
+            for (let entry of data) {
+                let dataNascimento = new Date(entry.data_Nascimento);
+                let dataEmissao = new Date(entry.data_Emissao);
+                console.log(entry)
+                htmlLista += "<tr><td>" + entry.nome + "</td>";
+                htmlLista += "<td>" + entry.nome_Social + "</td>";
+                htmlLista += "<td>" + `${dataNascimento.getDate()}/${dataNascimento.getMonth()+1}/${dataNascimento.getFullYear()}` + "</td>";
+                htmlLista += "<td>" + entry.cpf + "</td>";
+                htmlLista += "<td>" + entry.rg  + "</td>";
+                htmlLista += "<td>" + entry.uf + "</td>";
+                htmlLista += "<td>" + `${dataEmissao.getDate()}/${dataEmissao.getMonth()+1}/${dataEmissao.getFullYear()}` + "</td>";
+                htmlLista += "<td>" + entry.email + "</td>";
+                htmlLista += "<td>" + entry.endereco + "</td>";
+                htmlLista += "<td>" + entry.cep + "</td>";
+                htmlLista += "<td>" + entry.celular+ "</td>";
+                htmlLista += "<td>" + entry.tel_Fixo+ "</td>";
+                htmlLista += "<td>" + entry.genero+ "</td>";
+                htmlLista += "<td>" + entry.raca_Cor_Etnia+ "</td>";
+                htmlLista += "<td>" + (entry.ensinoMedio_Escola_Publica ? "Sim" : "Não")+ "</td>";
+                htmlLista += "<td>" + (entry.cursou_Faculdade ? "Sim" : "Não")+ "</td>";
+                htmlLista += "<td>" + entry.cursos+ "</td>";
+                htmlLista += "<td>" + (entry.professor ? "Sim" : "Não")+ "</td>";
+                htmlLista += "<td>" + (entry.servidor_Publico ? "Sim" : "Não")+ "</td>";
+                htmlLista += "<td>" + entry.eixo+ "</td>";
+                htmlLista += "<td>" + (entry.cadastro_SpTrans ? "Sim" : "Não")+ "</td>";
+                htmlLista += "<td>" + (entry.autorizacao_Imagem ? "Sim" : "Não")+ "</td>";
+                htmlLista += "</tr>";
+            }
+
+            htmlLista += "</table>";
+
+            $("#exibicao-alunos").html(htmlLista);
+            //document.getElementById('info-ultima-alteracao-lista').innerText = `Última alteração por: ${data.usuario} em ${data.data_Ultima_Alteracao}`;
+
+        }).fail(function (xhr, status, error) {
+            toggleLoading();
+            if (xhr.responseText != "") {
+                toastr.error(xhr.responseText);
+            }
+            toastr.error('Não foi posssível obter os alunos.');
+        });
+    }
+
+    const baixarAlunos = () => {
+        toggleLoading()
+        $.ajax({
+            type: "POST",
+            url: "/carga/baixar-alunos",
+            contentType: "application/json",
+            data: JSON.stringify(parseInt($("#sel_ciclo_alunos").val()))
+        }).done(function (data) {
+            toggleLoading()
+            if (!data) {
+                alert("Nenhuma cliente encontrado para esse ciclo.");
+            } else {
+                var link = document.createElement("a");
+                document.body.appendChild(link);
+                link.setAttribute("type", "hidden");
+                link.href = "data:text/plain;base64," + data;
+                link.download = `alunos.xlsx`;
+                link.click();
+                document.body.removeChild(link);
+            }
+        }).fail(function (xhr, status, error) {
+            toggleLoading()
+            alert(error);
+        });
+    }
+
+    const cargaAlunos = (dados) => {
+        dados.Tipo_Atualizacao = "Carga";                    
+
+        dadosCarga = dados;
+        toggleLoading();
+        $.ajax({
+            type: "POST",
+            url: "/carga/carga-alunos",
+            contentType: "application/json",
+            data: JSON.stringify(dados)
+        }).done(function (data) {
+            toggleLoading();
+
+            if (data.criticas != null && data.criticas.length > 0) {
+                if (data.criticas[0].criticas[0].includes("já está cadastrado")) {
+                    mostraAlteracoesPopup(data.criticas);
+                } else {
+                    mostraCriticasPopup(data.criticas)
+                }
+            }
+            else {
+                toastr.success("Carga feita com sucesso!");
+                carregaAlunos();
+            }
+
+        }).fail(function (xhr, status, error) {
+            toggleLoading();
+
+            // toastr.error(xhr.responseText);
+            toastr.error("Usuário não tem as permissões necessárias para realizar a carga");
+        });
+    }
+
+    const cargaAlunosConfirmar = () => {
+        dadosCarga.confirmado = true;
+        cargaAlunos(dadosCarga);
+    }
+
+    const mostraCriticasPopup = (criticas) => {
+        let criticas_wrapper = document.getElementById('criticas-wrapper');
+        criticas_wrapper.innerHTML = "";
+        for (let critica of criticas) {
+
+            if (critica.linha != 0)
+                criticas_wrapper.innerHTML += `<h6 class="text-center font-weight-bold mt-3" style="color:red;">Erro(s) na linha ${critica.linha}:</h6>`;
+            else
+                criticas_wrapper.innerHTML += `<h6 class="text-center font-weight-bold mt-3" style="color:red;">Erro:</h6>`;
+
+            for (let erro of critica.criticas) {
+                criticas_wrapper.innerHTML += '- ' + erro + ';</br>';
+            }
+        }
+        $("#criticasPopup").modal();
+    }
+
+    const mostraAlteracoesPopup = (criticas) => {
+        let criticas_wrapper = document.getElementById('alteracoes-wrapper');
+        criticas_wrapper.innerHTML = "";
+        for (let critica of criticas) {
+
+            if (critica.linha != 0)
+                criticas_wrapper.innerHTML += `<h6 class="text-center font-weight-bold mt-3" style="color:red;">Erro(s) na linha ${critica.linha}:</h6>`;
+            else
+                criticas_wrapper.innerHTML += `<h6 class="text-center font-weight-bold mt-3" style="color:red;">Atenção:</h6>`;
+
+            for (let erro of critica.criticas) {
+                criticas_wrapper.innerHTML += '- ' + erro + ';</br>';
+            }
+
+            criticas_wrapper.innerHTML += `<h6 class="text-center mt-3" style="color:red;">Se você seguir com a carga, os dados desses alunos serão atualizados com as informações presentes no excel anexado:</h6>`;
+
+        }
+        $("#alteracoesPopup").modal();
+    }
+
+    //#endregion
+
+    //#region "Upload de planilha"
+
+    const formatosValidos = arquivo => {
+        return /\.(xls|xlsx)$/i.test(arquivo.name);
+    }
+
+    async function anexarArquivos(input) {
+
+        var arquivos = input.files;
+
+        if (arquivos) {
+            for (const arquivo of arquivos) {
+                await lerArquivoAsync(arquivo);
+            }
+        }
+
+        document.getElementById('anexador').value = "";
+    }
+
+    function lerArquivoAsync(arquivo) {
+
+        if (formatosValidos(arquivo)) {
+
+            let reader = new FileReader();
+
+            reader.onload = () => {
+                var dadosArquivo = {
+                    'Id': parseInt($("#sel_tabela").val()),
+                    'ArquivoBase64': reader.result,
+                };
+
+                cargaAlunos(dadosArquivo);
+            };
+
+            reader.readAsDataURL(arquivo);
+
+        } else {
+            alert(FORMATO_INVALIDO_MSG);
+            return;
+        }
+    }
+
+    const FORMATO_INVALIDO_MSG = 'Formato de arquivo inválido.';
+    const ARQUIVO_NAO_INSERIDO_MSG = 'Não foi possível inserir o arquivo.';
+    const ARQUIVO_NAO_OBTIDO_MSG = 'Não foi possível obter os arquivos.';
+
+    //#endregion
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+
+        $('#alteracoesPopup').on('hidden.bs.modal', function (e) {
+            dadosCarga = null;
+        })
+    })
+    $(document).ready(function () {
+            carregaAlunos();
+        });
+</script>
+
+<style>
+    .univesp-green {
+        color: var(--clr-green) !important;
+    }
+    .criticas-wrapper {
+        max-height: 400px;
+        overflow: auto;
+    }
+    .table-layout-auto {
+        table-layout: auto;
+    }
+
+    table {
+        table-layout: fixed;
+    }
+
+    td {
+        max-width: 600px;
+    }
+
+    #container-admin {
+        border: 1px solid #aaa;
+        height: 700px;
+        background: #ffffffcc;
+        display: flex;
+    }
+
+    #coluna-abas {
+        background-color: rgba(1,44,51, .7);
+        color: white;
+        cursor: pointer;
+        vertical-align: top;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+        width: 140px;
+    }
+
+        #coluna-abas .aba {
+            padding: 10px;
+            height: 50px;
+        }
+
+        #coluna-abas .aba-ativa {
+            background-color: white;
+            color: var(--smartagro-blue);
+            font-weight: bold;
+        }
+
+    .modal-body {
+        max-height: 450px;
+        overflow: auto;
+    }
+
+    #coluna-conteudo {
+        padding: 20px;
+        vertical-align: top;
+        flex-grow: 1;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    @@media only screen and (max-width: 768px) {
+        #container-admin {
+            flex-direction: column;
+        }
+
+        #coluna-abas {
+            width: 100%;
+            display: flex;
+            overflow: scroll;
+        }
+
+        #coluna-conteudo {
+            padding: 10px;
+        }
+    }
+
+
+    #exibicao-lista, #exibicao-tabela, #exibicao-usuarios, #exibicao-versoes, .exibicao {
+        overflow-y: auto;
+        max-height: 600px;
+    }
+
+    .conteudo-aba {
+        width: 100%;
+    }
+
+    .tabela-exibicao {
+        position: relative;
+    }
+
+        .tabela-exibicao thead th {
+            position: sticky;
+            top: -1px;
+            z-index: 10;
+            min-width: 160px;
+        }
+
+        .tabela-exibicao button {
+            z-index: 0;
+        }
+
+    .excluir-valor-lista {
+        width: 50px;
+        display: block;
+        margin: auto;
+        float: none;
+    }
+
+    table th {
+        background-color: #AF1817;
+        color: white;
+    }
+
+    .btn-usuario {
+        font-size: 1.25rem;
+        color: #9999;
+        cursor: pointer;
+    }
+
+    .titulo-usuarios {
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: #444;
+    }
+
+    #exibicao-usuarios, #exibicao-tabela, #exibicao-lista {
+        border-radius: 8px;
+    }
+
+    .cc-usuario {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: #2222 1px solid;
+        padding: 10px 0;
+    }
+
+    .btn-icone-watcher {
+        color: #3c4705;
+        opacity: .5;
+        cursor: pointer;
+    }
+
+    .usuario-watcher {
+        opacity: 1;
+    }
+
+    .tabela-exibicao thead th {
+        white-space: nowrap !important;
+    }
+
+    .btn-icone {
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    .usuario-desativado {
+        color: gray;
+    }
+
+    .tooltip {
+        pointer-events: none;
+    }
+
+</style>
