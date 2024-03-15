@@ -10403,19 +10403,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\s1110610\\.nuget\\packages\\": {}
+    "/Users/kevinchristopherpiovezan/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\s1110610\\Meus Repositorios\\PI\\Solution\\src\\Web\\Univesp.CaminhoDoMar.ProjetoIntegrador.Web.csproj",
+      "projectUniqueName": "/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/Web/Univesp.CaminhoDoMar.ProjetoIntegrador.Web.csproj",
       "projectName": "uniceu",
-      "projectPath": "C:\\Users\\s1110610\\Meus Repositorios\\PI\\Solution\\src\\Web\\Univesp.CaminhoDoMar.ProjetoIntegrador.Web.csproj",
-      "packagesPath": "C:\\Users\\s1110610\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\s1110610\\Meus Repositorios\\PI\\Solution\\src\\Web\\obj\\",
+      "projectPath": "/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/Web/Univesp.CaminhoDoMar.ProjetoIntegrador.Web.csproj",
+      "packagesPath": "/Users/kevinchristopherpiovezan/.nuget/packages/",
+      "outputPath": "/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/Web/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\s1110610\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/kevinchristopherpiovezan/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -10425,12 +10425,13 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\s1110610\\Meus Repositorios\\PI\\Solution\\src\\ApplicationCore\\Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.csproj": {
-              "projectPath": "C:\\Users\\s1110610\\Meus Repositorios\\PI\\Solution\\src\\ApplicationCore\\Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.csproj"
+            "/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/ApplicationCore/Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.csproj": {
+              "projectPath": "/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/ApplicationCore/Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.csproj"
             },
-            "C:\\Users\\s1110610\\Meus Repositorios\\PI\\Solution\\src\\Infrastructure\\Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\s1110610\\Meus Repositorios\\PI\\Solution\\src\\Infrastructure\\Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csproj"
+            "/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/Infrastructure/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csproj": {
+              "projectPath": "/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/Infrastructure/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csproj"
             }
           }
         }
@@ -10443,6 +10444,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.OpenIdConnect": {
             "target": "Package",
@@ -10475,6 +10477,20 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[3.1.10, 3.1.10]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.osx-x64",
+            "version": "[3.1.21, 3.1.21]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[3.1.0, 3.1.0]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -10483,7 +10499,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.423\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
       }
     }
   }

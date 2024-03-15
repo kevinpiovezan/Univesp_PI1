@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\s1110610\\Meus Repositorios\\PI\\Solution\\src\\Infrastructure\\Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csproj": {}
+    "/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/Infrastructure/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\s1110610\\Meus Repositorios\\PI\\Solution\\src\\ApplicationCore\\Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.csproj": {
+    "/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/ApplicationCore/Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\s1110610\\Meus Repositorios\\PI\\Solution\\src\\ApplicationCore\\Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.csproj",
+        "projectUniqueName": "/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/ApplicationCore/Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.csproj",
         "projectName": "Univesp.CaminhoDoMar.ProjetoIntegradorApplicationCore",
-        "projectPath": "C:\\Users\\s1110610\\Meus Repositorios\\PI\\Solution\\src\\ApplicationCore\\Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.csproj",
-        "packagesPath": "C:\\Users\\s1110610\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\s1110610\\Meus Repositorios\\PI\\Solution\\src\\ApplicationCore\\obj\\",
+        "projectPath": "/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/ApplicationCore/Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.csproj",
+        "packagesPath": "/Users/kevinchristopherpiovezan/.nuget/packages/",
+        "outputPath": "/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/ApplicationCore/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\s1110610\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/kevinchristopherpiovezan/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -24,6 +24,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -35,6 +36,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "imports": [
             "net461",
             "net462",
@@ -45,26 +47,36 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.423\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\s1110610\\Meus Repositorios\\PI\\Solution\\src\\Infrastructure\\Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csproj": {
+    "/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/Infrastructure/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\s1110610\\Meus Repositorios\\PI\\Solution\\src\\Infrastructure\\Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csproj",
+        "projectUniqueName": "/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/Infrastructure/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csproj",
         "projectName": "Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure",
-        "projectPath": "C:\\Users\\s1110610\\Meus Repositorios\\PI\\Solution\\src\\Infrastructure\\Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\s1110610\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\s1110610\\Meus Repositorios\\PI\\Solution\\src\\Infrastructure\\obj\\",
+        "projectPath": "/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/Infrastructure/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csproj",
+        "packagesPath": "/Users/kevinchristopherpiovezan/.nuget/packages/",
+        "outputPath": "/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/Infrastructure/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\s1110610\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/kevinchristopherpiovezan/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -74,9 +86,10 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\s1110610\\Meus Repositorios\\PI\\Solution\\src\\ApplicationCore\\Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.csproj": {
-                "projectPath": "C:\\Users\\s1110610\\Meus Repositorios\\PI\\Solution\\src\\ApplicationCore\\Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.csproj"
+              "/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/ApplicationCore/Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.csproj": {
+                "projectPath": "/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/ApplicationCore/Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.csproj"
               }
             }
           }
@@ -89,6 +102,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "EPPlus": {
               "target": "Package",
@@ -121,12 +135,22 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.423\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
         }
       }
     }

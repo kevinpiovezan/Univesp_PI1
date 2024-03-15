@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   mysql:
-    image: mysql:5.7
+    image: mysql:latest
     restart: always
     environment:
       MYSQL_DATABASE: 'uniceu'
@@ -19,13 +19,12 @@ services:
       - '3306'
       # Where our data will be persisted
     volumes:
-      - my-db:/var/lib/mysql
+      - ./db.sql:/docker-entrypoint-initdb.d/db.sql
   web:
     build: .
     ports: 
       - 8080:80
       - 8443:443 
 # Names our volume
-volumes:
-  my-db:
+
 

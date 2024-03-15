@@ -1,12 +1,19 @@
-C:\Users\s1110610\Meus Repositorios\PI\Solution\src\Infrastructure\bin\Debug\netcoreapp3.1\Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.deps.json
-C:\Users\s1110610\Meus Repositorios\PI\Solution\src\Infrastructure\bin\Debug\netcoreapp3.1\Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.dll
-C:\Users\s1110610\Meus Repositorios\PI\Solution\src\Infrastructure\bin\Debug\netcoreapp3.1\Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.pdb
-C:\Users\s1110610\Meus Repositorios\PI\Solution\src\Infrastructure\bin\Debug\netcoreapp3.1\Univesp.CaminhoDoMar.ProjetoIntegradorApplicationCore.dll
-C:\Users\s1110610\Meus Repositorios\PI\Solution\src\Infrastructure\bin\Debug\netcoreapp3.1\Univesp.CaminhoDoMar.ProjetoIntegradorApplicationCore.pdb
-C:\Users\s1110610\Meus Repositorios\PI\Solution\src\Infrastructure\obj\Debug\netcoreapp3.1\Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csprojAssemblyReference.cache
-C:\Users\s1110610\Meus Repositorios\PI\Solution\src\Infrastructure\obj\Debug\netcoreapp3.1\Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.AssemblyInfoInputs.cache
-C:\Users\s1110610\Meus Repositorios\PI\Solution\src\Infrastructure\obj\Debug\netcoreapp3.1\Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.AssemblyInfo.cs
-C:\Users\s1110610\Meus Repositorios\PI\Solution\src\Infrastructure\obj\Debug\netcoreapp3.1\Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csproj.CoreCompileInputs.cache
-C:\Users\s1110610\Meus Repositorios\PI\Solution\src\Infrastructure\obj\Debug\netcoreapp3.1\Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csproj.CopyComplete
-C:\Users\s1110610\Meus Repositorios\PI\Solution\src\Infrastructure\obj\Debug\netcoreapp3.1\Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.dll
-C:\Users\s1110610\Meus Repositorios\PI\Solution\src\Infrastructure\obj\Debug\netcoreapp3.1\Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.pdb
+C:/Users/s1110610/Meus Repositorios/PI/Solution/src/Infrastructure/bin/Debug/netcoreapp3.1/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.deps.json
+C:/Users/s1110610/Meus Repositorios/PI/Solution/src/Infrastructure/bin/Debug/netcoreapp3.1/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.dll
+C:/Users/s1110610/Meus Repositorios/PI/Solution/src/Infrastructure/bin/Debug/netcoreapp3.1/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.pdb
+C:/Users/s1110610/Meus Repositorios/PI/Solution/src/Infrastructure/bin/Debug/netcoreapp3.1/Univesp.CaminhoDoMar.ProjetoIntegradorApplicationCore.dll
+C:/Users/s1110610/Meus Repositorios/PI/Solution/src/Infrastructure/bin/Debug/netcoreapp3.1/Univesp.CaminhoDoMar.ProjetoIntegradorApplicationCore.pdb
+C:/Users/s1110610/Meus Repositorios/PI/Solution/src/Infrastructure/obj/Debug/netcoreapp3.1/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csprojAssemblyReference.cache
+C:/Users/s1110610/Meus Repositorios/PI/Solution/src/Infrastructure/obj/Debug/netcoreapp3.1/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.AssemblyInfoInputs.cache
+C:/Users/s1110610/Meus Repositorios/PI/Solution/src/Infrastructure/obj/Debug/netcoreapp3.1/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.AssemblyInfo.cs
+C:/Users/s1110610/Meus Repositorios/PI/Solution/src/Infrastructure/obj/Debug/netcoreapp3.1/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csproj.CoreCompileInputs.cache
+C:/Users/s1110610/Meus Repositorios/PI/Solution/src/Infrastructure/obj/Debug/netcoreapp3.1/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csproj.CopyComplete
+C:/Users/s1110610/Meus Repositorios/PI/Solution/src/Infrastructure/obj/Debug/netcoreapp3.1/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.dll
+C:/Users/s1110610/Meus Repositorios/PI/Solution/src/Infrastructure/obj/Debug/netcoreapp3.1/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.pdb
+/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/Infrastructure/obj/Debug/netcoreapp3.1/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csproj.AssemblyReference.cache
+/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/Infrastructure/obj/Debug/netcoreapp3.1/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/Infrastructure/obj/Debug/netcoreapp3.1/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.AssemblyInfoInputs.cache
+/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/Infrastructure/obj/Debug/netcoreapp3.1/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.AssemblyInfo.cs
+/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/Infrastructure/obj/Debug/netcoreapp3.1/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/Infrastructure/obj/Debug/netcoreapp3.1/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.dll
+/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/Infrastructure/obj/Debug/netcoreapp3.1/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.pdb

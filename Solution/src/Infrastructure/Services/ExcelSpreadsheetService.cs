@@ -250,16 +250,17 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
                 CriticasCarga critica = new CriticasCarga();
                 critica.Linha = r;
                 critica.Criticas = new List<string>();
-                
+                Console.WriteLine(planilha.Cells[r, 3].Text);
+                Console.WriteLine(planilha.Cells[r, 7].Text);
                 Aluno a = new Aluno()
                 {
                     Nome = planilha.Cells[r, 1].Text,
                     Nome_Social = planilha.Cells[r, 2].Text,
-                    Data_Nascimento = Convert.ToDateTime(planilha.Cells[r, 3].Text),
+                    Data_Nascimento = DateTime.ParseExact(planilha.Cells[r, 3].Text,"dd/MM/yyyy", CultureInfo.InvariantCulture),
                     Cpf = planilha.Cells[r, 4].Text,
                     Rg = planilha.Cells[r, 5].Text,
                     UF = planilha.Cells[r, 6].Text,
-                    Data_Emissao = Convert.ToDateTime(planilha.Cells[r, 7].Text),
+                    Data_Emissao = DateTime.ParseExact(planilha.Cells[r, 7].Text,"dd/MM/yyyy", CultureInfo.InvariantCulture),
                     Email = planilha.Cells[r, 8].Text,
                     Endereco = planilha.Cells[r, 9].Text,
                     Cep = planilha.Cells[r, 10].Text,
