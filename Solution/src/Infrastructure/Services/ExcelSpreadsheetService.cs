@@ -280,7 +280,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
                     case "PAUSADA":
                         statusMatricula = 2;
                         break;
-                    case "CONCLUIADA":
+                    case "CONCLUIDA":
                         statusMatricula = 3;
                         break;
                     case "CANCELADA":
