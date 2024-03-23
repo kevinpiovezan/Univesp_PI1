@@ -6,7 +6,9 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.DTOs
     public class SearchFiltersDTO
     {
         public string Nome { get; set; }
+        public string Sei { get; set; }
         public string Cpf { get; set; }
+        public int Status_Matricula { get; set; }
         
         public bool EnsinoMedio_Escola_Publica { get; set; }
         public bool Cursou_Faculdade { get; set; }

@@ -12,6 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.Business;
 using Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.DTOs;
+using Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.Enums;
 
 namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
 {
@@ -170,7 +171,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
             var workSheet = excel.Workbook.Worksheets.Add("Clientes");
             Dictionary<string, int> indiceHeader = new Dictionary<string, int>();
 
-            List<string> cabecalho = new List<string>() { "Nome", "Nome Social", "Data de Nascimento", "CPF", "RG", "UF", "Data de Emissão", "E-mail pessoal", "Endereco", "CEP", "Celular",
+            List<string> cabecalho = new List<string>() { "Status Matricula","Nome","Sei","Nome Social", "Data de Nascimento", "CPF", "RG", "UF", "Data de Emissão", "E-mail pessoal", "Endereco", "CEP", "Celular",
                 "Telefone Fixo", "Gênero", "Raça/Cor/Etnia","Cursou Ensino Médio em Escola Pública?", "Já cursou alguma faculdade?", "Se sim, quais cursos?", "É professor?",
                 "É Servidor Público?", "Eixo escolhido na UniCeu", "Cadastro Bilhete de estudante(SPTrans)","Autorização de Imagem" };
             foreach (string c in cabecalho)
@@ -180,30 +181,50 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
 
 
             int currentRow = 2;
+            
             foreach (var a in alunos)
             {
-                workSheet.Cells[currentRow, 1].Value = a.Nome;
-                workSheet.Cells[currentRow, 2].Value = a.Nome_Social;
-                workSheet.Cells[currentRow, 3].Value = a.Data_Nascimento.ToString("dd/MM/yyyy");
-                workSheet.Cells[currentRow, 4].Value = a.Cpf;
-                workSheet.Cells[currentRow, 5].Value = a.Rg;
-                workSheet.Cells[currentRow, 6].Value = a.UF;
-                workSheet.Cells[currentRow, 7].Value = a.Data_Emissao.ToString("dd/MM/yyyy");
-                workSheet.Cells[currentRow, 8].Value = a.Email;
-                workSheet.Cells[currentRow, 9].Value = a.Endereco;
-                workSheet.Cells[currentRow, 10].Value = a.Cep;
-                workSheet.Cells[currentRow, 11].Value = a.Celular;
-                workSheet.Cells[currentRow, 12].Value = a.Tel_Fixo;
-                workSheet.Cells[currentRow, 13].Value = a.Genero;
-                workSheet.Cells[currentRow, 14].Value = a.Raca_Cor_Etnia;
-                workSheet.Cells[currentRow, 15].Value = a.EnsinoMedio_Escola_Publica ? "Sim" : "Não";
-                workSheet.Cells[currentRow, 16].Value = a.Cursou_Faculdade ? "Sim" : "Não";
-                workSheet.Cells[currentRow, 17].Value = a.Cursos;
-                workSheet.Cells[currentRow, 18].Value = a.Professor ? "Sim" : "Não";
-                workSheet.Cells[currentRow, 19].Value = a.Servidor_Publico ? "Sim" : "Não";
-                workSheet.Cells[currentRow, 20].Value = a.Eixo;
-                workSheet.Cells[currentRow, 21].Value = a.Cadastro_SpTrans ? "Sim" : "Não";
-                workSheet.Cells[currentRow, 22].Value = a.Autorizacao_Imagem ? "Sim" : "Não";
+                string statusMatricula = string.Empty;
+
+                switch (a.Id_Status_Matricula)
+                {
+                    case 1:
+                        statusMatricula = EStatus_Matricula.ATIVA.ToString();
+                        break;
+                    case 2:
+                        statusMatricula = EStatus_Matricula.PAUSADA.ToString();
+                        break;
+                    case 3:
+                        statusMatricula = EStatus_Matricula.CONCLUIDA.ToString();
+                        break;
+                    case 4:
+                        statusMatricula = EStatus_Matricula.CANCELADA.ToString();
+                        break;
+                }
+                workSheet.Cells[currentRow, 1].Value = statusMatricula;
+                workSheet.Cells[currentRow, 2].Value = a.Nome;
+                workSheet.Cells[currentRow, 3].Value = a.Sei;
+                workSheet.Cells[currentRow, 4].Value = a.Nome_Social;
+                workSheet.Cells[currentRow, 5].Value = a.Data_Nascimento.ToString("dd/MM/yyyy");
+                workSheet.Cells[currentRow, 6].Value = a.Cpf;
+                workSheet.Cells[currentRow, 7].Value = a.Rg;
+                workSheet.Cells[currentRow, 8].Value = a.UF;
+                workSheet.Cells[currentRow, 9].Value = a.Data_Emissao.ToString("dd/MM/yyyy");
+                workSheet.Cells[currentRow, 10].Value = a.Email;
+                workSheet.Cells[currentRow, 11].Value = a.Endereco;
+                workSheet.Cells[currentRow, 12].Value = a.Cep;
+                workSheet.Cells[currentRow, 13].Value = a.Celular;
+                workSheet.Cells[currentRow, 14].Value = a.Tel_Fixo;
+                workSheet.Cells[currentRow, 15].Value = a.Genero;
+                workSheet.Cells[currentRow, 16].Value = a.Raca_Cor_Etnia;
+                workSheet.Cells[currentRow, 17].Value = a.EnsinoMedio_Escola_Publica ? "Sim" : "Não";
+                workSheet.Cells[currentRow, 18].Value = a.Cursou_Faculdade ? "Sim" : "Não";
+                workSheet.Cells[currentRow, 19].Value = a.Cursos;
+                workSheet.Cells[currentRow, 20].Value = a.Professor ? "Sim" : "Não";
+                workSheet.Cells[currentRow, 21].Value = a.Servidor_Publico ? "Sim" : "Não";
+                workSheet.Cells[currentRow, 22].Value = a.Eixo;
+                workSheet.Cells[currentRow, 23].Value = a.Cadastro_SpTrans ? "Sim" : "Não";
+                workSheet.Cells[currentRow, 24].Value = a.Autorizacao_Imagem ? "Sim" : "Não";
                 currentRow++;
             }
 
@@ -223,7 +244,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
             ExcelPackage excel = new ExcelPackage(arquivo);
 
             ExcelWorksheet planilha = excel.Workbook.Worksheets[0];
-            List<string> cabecalho = new List<string>() { "Nome", "Nome Social", "Data de Nascimento", "CPF", "RG", "UF", "Data de Emissão", "E-mail pessoal", "Endereco", "CEP", "Celular",
+            List<string> cabecalho = new List<string>() { "Status Matricula","Nome","Sei","Nome Social", "Data de Nascimento", "CPF", "RG", "UF", "Data de Emissão", "E-mail pessoal", "Endereco", "CEP", "Celular",
                 "Telefone Fixo", "Gênero", "Raça/Cor/Etnia","Cursou Ensino Médio em Escola Pública?", "Já cursou alguma faculdade?", "Se sim, quais cursos?", "É professor?",
                 "É Servidor Público?", "Eixo escolhido na UniCeu", "Cadastro Bilhete de estudante(SPTrans)","Autorização de Imagem" };
 
@@ -250,32 +271,48 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
                 CriticasCarga critica = new CriticasCarga();
                 critica.Linha = r;
                 critica.Criticas = new List<string>();
-                Console.WriteLine(planilha.Cells[r, 3].Text);
-                Console.WriteLine(planilha.Cells[r, 7].Text);
+                int statusMatricula = 0;
+                switch (planilha.Cells[r, 1].Text)
+                {
+                    case "ATIVA":
+                        statusMatricula = 1;
+                        break;
+                    case "PAUSADA":
+                        statusMatricula = 2;
+                        break;
+                    case "CONCLUIADA":
+                        statusMatricula = 3;
+                        break;
+                    case "CANCELADA":
+                        statusMatricula = 4;
+                        break;
+                }
                 Aluno a = new Aluno()
                 {
-                    Nome = planilha.Cells[r, 1].Text,
-                    Nome_Social = planilha.Cells[r, 2].Text,
-                    Data_Nascimento = DateTime.ParseExact(planilha.Cells[r, 3].Text,"dd/MM/yyyy", CultureInfo.InvariantCulture),
-                    Cpf = planilha.Cells[r, 4].Text,
-                    Rg = planilha.Cells[r, 5].Text,
-                    UF = planilha.Cells[r, 6].Text,
-                    Data_Emissao = DateTime.ParseExact(planilha.Cells[r, 7].Text,"dd/MM/yyyy", CultureInfo.InvariantCulture),
-                    Email = planilha.Cells[r, 8].Text,
-                    Endereco = planilha.Cells[r, 9].Text,
-                    Cep = planilha.Cells[r, 10].Text,
-                    Celular = planilha.Cells[r, 11].Text,
-                    Tel_Fixo = planilha.Cells[r, 12].Text,
-                    Genero = planilha.Cells[r, 13].Text,
-                    Raca_Cor_Etnia = planilha.Cells[r, 14].Text,
-                    EnsinoMedio_Escola_Publica = planilha.Cells[r, 15].Text.ToLower() == "sim",
-                    Cursou_Faculdade = planilha.Cells[r, 16].Text.ToLower() == "sim",
-                    Cursos = planilha.Cells[r, 17].Text,
-                    Professor = planilha.Cells[r, 18].Text.ToLower() == "sim",
-                    Servidor_Publico = planilha.Cells[r, 19].Text.ToLower() == "sim",
-                    Eixo = planilha.Cells[r, 20].Text,
-                    Cadastro_SpTrans = planilha.Cells[r, 21].Text.ToLower() == "sim",
-                    Autorizacao_Imagem = planilha.Cells[r, 22].Text.ToLower() == "sim",
+                    Id_Status_Matricula = statusMatricula,
+                    Nome = planilha.Cells[r, 2].Text,
+                    Sei = planilha.Cells[r, 3].Text,
+                    Nome_Social = planilha.Cells[r, 4].Text,
+                    Data_Nascimento = DateTime.ParseExact(planilha.Cells[r, 5].Text,"dd/MM/yyyy", CultureInfo.InvariantCulture),
+                    Cpf = planilha.Cells[r, 6].Text,
+                    Rg = planilha.Cells[r, 7].Text,
+                    UF = planilha.Cells[r, 8].Text,
+                    Data_Emissao = DateTime.ParseExact(planilha.Cells[r, 9].Text,"dd/MM/yyyy", CultureInfo.InvariantCulture),
+                    Email = planilha.Cells[r, 10].Text,
+                    Endereco = planilha.Cells[r, 11].Text,
+                    Cep = planilha.Cells[r, 12].Text,
+                    Celular = planilha.Cells[r, 13].Text,
+                    Tel_Fixo = planilha.Cells[r, 14].Text,
+                    Genero = planilha.Cells[r, 15].Text,
+                    Raca_Cor_Etnia = planilha.Cells[r, 16].Text,
+                    EnsinoMedio_Escola_Publica = planilha.Cells[r, 17].Text.ToLower() == "sim",
+                    Cursou_Faculdade = planilha.Cells[r, 18].Text.ToLower() == "sim",
+                    Cursos = planilha.Cells[r, 19].Text,
+                    Professor = planilha.Cells[r, 20].Text.ToLower() == "sim",
+                    Servidor_Publico = planilha.Cells[r, 21].Text.ToLower() == "sim",
+                    Eixo = planilha.Cells[r, 22].Text,
+                    Cadastro_SpTrans = planilha.Cells[r, 23].Text.ToLower() == "sim",
+                    Autorizacao_Imagem = planilha.Cells[r, 24].Text.ToLower() == "sim",
                     Ultima_Atualizacao = DateTime.Now
                 };
 
@@ -387,7 +424,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
 
                 List<string> cabecalho = new List<string>()
                 {
-                    "Última atualização", "Nome", "Nome Social", "Data de Nascimento", "CPF", "RG", "UF", "Data de Emissão", "E-mail pessoal", "Endereco", "CEP", "Celular",
+                    "Última atualização", "Status Matricula","Nome","Sei","Nome Social", "Data de Nascimento", "CPF", "RG", "UF", "Data de Emissão", "E-mail pessoal", "Endereco", "CEP", "Celular",
                     "Telefone Fixo", "Gênero", "Raça/Cor/Etnia","Cursou Ensino Médio em Escola Pública?", "Já cursou alguma faculdade?", "Se sim, quais cursos?", "É professor?",
                     "É Servidor Público?", "Eixo escolhido na UniCeu", "Cadastro Bilhete de estudante(SPTrans)","Autorização de Imagem"
                 };
@@ -402,29 +439,48 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
                 for (var i = 0; i < alunos.Count; i++)
                 {
                     var a = alunos[i];
+                    string statusMatricula = string.Empty;
+
+                    switch (a.Id_Status_Matricula)
+                    {
+                        case 1:
+                            statusMatricula = EStatus_Matricula.ATIVA.ToString();
+                            break;
+                        case 2:
+                            statusMatricula = EStatus_Matricula.PAUSADA.ToString();
+                            break;
+                        case 3:
+                            statusMatricula = EStatus_Matricula.CONCLUIDA.ToString();
+                            break;
+                        case 4:
+                            statusMatricula = EStatus_Matricula.CANCELADA.ToString();
+                            break;
+                    }
                     workSheet.Cells[currentRow, 1].Value = a.Ultima_Atualizacao.ToString("dd/MM/yyyy HH:mm");
-                    workSheet.Cells[currentRow, 2].Value = a.Nome;
-                    workSheet.Cells[currentRow, 3].Value = a.Nome_Social;
-                    workSheet.Cells[currentRow, 4].Value = a.Data_Nascimento.ToString("dd/MM/yyyy");
-                    workSheet.Cells[currentRow, 5].Value = a.Cpf;
-                    workSheet.Cells[currentRow, 6].Value = a.Rg;
-                    workSheet.Cells[currentRow, 7].Value = a.UF;
-                    workSheet.Cells[currentRow, 8].Value = a.Data_Emissao.ToString("dd/MM/yyyy");
-                    workSheet.Cells[currentRow, 9].Value = a.Email;
-                    workSheet.Cells[currentRow, 10].Value = a.Endereco;
-                    workSheet.Cells[currentRow, 11].Value = a.Cep;
-                    workSheet.Cells[currentRow, 12].Value = a.Celular;
-                    workSheet.Cells[currentRow, 13].Value = a.Tel_Fixo;
-                    workSheet.Cells[currentRow, 14].Value = a.Genero;
-                    workSheet.Cells[currentRow, 15].Value = a.Raca_Cor_Etnia;
-                    workSheet.Cells[currentRow, 16].Value = a.EnsinoMedio_Escola_Publica ? "Sim" : "Não";
-                    workSheet.Cells[currentRow, 17].Value = a.Cursou_Faculdade ? "Sim" : "Não";
-                    workSheet.Cells[currentRow, 18].Value = a.Cursos;
-                    workSheet.Cells[currentRow, 19].Value = a.Professor ? "Sim" : "Não";
-                    workSheet.Cells[currentRow, 20].Value = a.Servidor_Publico ? "Sim" : "Não";
-                    workSheet.Cells[currentRow, 21].Value = a.Eixo;
-                    workSheet.Cells[currentRow, 22].Value = a.Cadastro_SpTrans ? "Sim" : "Não";
-                    workSheet.Cells[currentRow, 23].Value = a.Autorizacao_Imagem ? "Sim" : "Não";
+                    workSheet.Cells[currentRow, 2].Value = statusMatricula;
+                    workSheet.Cells[currentRow, 3].Value = a.Nome;
+                    workSheet.Cells[currentRow, 4].Value = a.Sei;
+                    workSheet.Cells[currentRow, 5].Value = a.Nome_Social;
+                    workSheet.Cells[currentRow, 6].Value = a.Data_Nascimento.ToString("dd/MM/yyyy");
+                    workSheet.Cells[currentRow, 7].Value = a.Cpf;
+                    workSheet.Cells[currentRow, 8].Value = a.Rg;
+                    workSheet.Cells[currentRow, 9].Value = a.UF;
+                    workSheet.Cells[currentRow, 10].Value = a.Data_Emissao.ToString("dd/MM/yyyy");
+                    workSheet.Cells[currentRow, 11].Value = a.Email;
+                    workSheet.Cells[currentRow, 12].Value = a.Endereco;
+                    workSheet.Cells[currentRow, 13].Value = a.Cep;
+                    workSheet.Cells[currentRow, 14].Value = a.Celular;
+                    workSheet.Cells[currentRow, 15].Value = a.Tel_Fixo;
+                    workSheet.Cells[currentRow, 16].Value = a.Genero;
+                    workSheet.Cells[currentRow, 17].Value = a.Raca_Cor_Etnia;
+                    workSheet.Cells[currentRow, 18].Value = a.EnsinoMedio_Escola_Publica ? "Sim" : "Não";
+                    workSheet.Cells[currentRow, 19].Value = a.Cursou_Faculdade ? "Sim" : "Não";
+                    workSheet.Cells[currentRow, 20].Value = a.Cursos;
+                    workSheet.Cells[currentRow, 21].Value = a.Professor ? "Sim" : "Não";
+                    workSheet.Cells[currentRow, 22].Value = a.Servidor_Publico ? "Sim" : "Não";
+                    workSheet.Cells[currentRow, 23].Value = a.Eixo;
+                    workSheet.Cells[currentRow, 24].Value = a.Cadastro_SpTrans ? "Sim" : "Não";
+                    workSheet.Cells[currentRow, 25].Value = a.Autorizacao_Imagem ? "Sim" : "Não";
 
                     currentRow++;
                 }

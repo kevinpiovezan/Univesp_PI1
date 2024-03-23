@@ -33,6 +33,10 @@
                 </div>
             }
             <div class="info-item">
+                <p class="item-title">Sei:</p>
+                <p class="item-data">@Model.Aluno.Sei</p>
+            </div>
+            <div class="info-item">
                 <p class="item-title">Data de Nascimento:</p>
                 <p class="item-data">@Model.Aluno.Data_Nascimento.ToString("dd/MM/yyyy")</p>
             </div>
@@ -82,7 +86,11 @@
                 <p class="item-data">@Model.Aluno.Genero</p>
             </div>
         </div>
-        <div class="bloco-dados-gerais">            
+        <div class="bloco-dados-gerais">   
+            <div class="info-item">
+                <p class="item-title">Status da Matricula:</p>
+                <p class="item-data">@Model.Aluno.GetStatus()</p>
+            </div>         
             <div class="info-item">
                 <p class="item-title">Raça/Cor/Etnia: </p>
                 <p class="item-data">@Model.Aluno.Raca_Cor_Etnia</p>

@@ -92,6 +92,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorWeb.Controllers
                 Aluno aluno_banco = alunos_banco.FirstOrDefault(ab => ab.Cpf == a.Cpf);
                 if (aluno_banco != null)
                 {
+                    aluno_banco.Id_Status_Matricula = a.Id_Status_Matricula;
                     aluno_banco.Email = a.Email;
                     aluno_banco.Endereco = a.Endereco;
                     aluno_banco.Cep = a.Cep;

@@ -41,10 +41,7 @@
     <Compile Remove="Business\Ciclo_Cliente.cs" />
     <Compile Remove="Business\Cliente_Arquivo.cs" />
     <Compile Remove="Business\Tipo_Cliente.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Enums\" />
+    <Compile Remove="Business\Status_Matricula.cs" />
   </ItemGroup>
 
 </Project>

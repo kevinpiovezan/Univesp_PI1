@@ -41,7 +41,9 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.Data.Repositorie
             var query = (from a in _Context.Alunos
                 where 
                     (filters.Nome == "" || a.Nome.ToLower().Contains(filters.Nome.ToLower())) &&
+                    (filters.Sei == "" || a.Sei.ToLower().Contains(filters.Sei.ToLower())) &&
                     (filters.Cpf == "" || filters.Cpf == a.Cpf) &&
+                    (filters.Status_Matricula == 0|| a.Id_Status_Matricula == filters.Status_Matricula) &&
                     (!filters.Professor || a.Professor == filters.Professor) &&
                     (!filters.Autorizacao_Imagem || a.Autorizacao_Imagem == filters.Autorizacao_Imagem) &&
                     (!filters.Cursou_Faculdade || a.Cursou_Faculdade == filters.Cursou_Faculdade) &&

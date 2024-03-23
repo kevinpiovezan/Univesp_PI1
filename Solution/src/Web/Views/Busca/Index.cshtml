@@ -19,9 +19,23 @@
             <input id="nome" style="max-height: 38px;" name="nome" class="form-control" />
         </div>
         <div class="form-group col-lg-3 col-12">
+            <label for="sei">Sei:</label>
+            <input id="sei" style="max-height: 38px;" name="sei" class="form-control" />
+        </div>
+        <div class="form-group col-lg-3 col-12">
             <label for="cpf">CPF:</label>
             <input id="cpf" style="max-height: 38px;" name="cpf" class="form-control" />
         </div>
+        <div class="form-group col-lg-3 col-12">
+                    <label for="matricula">Status da Matricula:</label>
+                    <select id="matricula" name="matricula" class="form-control">
+                        <option value="0" selected>TODOS OS STATUS</option>
+                        <option value="1">ATIVA</option>
+                        <option value="2">PAUSADA</option>
+                        <option value="3">CONCLUIDA</option>
+                        <option value="4">CANCELADA</option>
+                    </select>
+                </div>
         <div class="form-group col-lg-3 col-12">
             <label for="professor">É Professor:</label>
             <select id="professor" name="professor" class="form-control">
@@ -64,8 +78,7 @@
                 <option value="nao" selected>Não</option>
             </select>
         </div>
-        <div class="col-lg-9"></div>
-        <div class="form-group col-lg-1 col-12 btn-buscar">
+        <div class="form-group col-lg-3 col-12 btn-buscar">
             <button type="button" id="buscar" onclick="busca(this);" class="btn btn-red form-control">
                 <div id="btn-buscar">
                     <i class="fas fa-search ml-1"></i>
@@ -75,7 +88,7 @@
                 </div>
             </button>
         </div>
-        <div class="form-group col-lg-2 col-12 btn-buscar">
+        <div class="form-group col-lg-3 col-12 btn-buscar">
             <button type="button" onclick='document.getElementById("form").reset();$("select[multiple]").multipleSelect("refresh");$("#buscar").click()' class="btn btn-red form-control">
                 Limpar
             </button>
@@ -183,6 +196,8 @@
             servidor_Publico: document.getElementById('servidor_publico').value === "sim" ? true : false,
             cadastro_SpTrans: document.getElementById('sptrans').value === "sim" ? true : false,
             autorizacao_Imagem: document.getElementById('autorizacao_imagem').value === "sim" ? true : false,
+            sei: document.getElementById('sei').value,
+            status_Matricula: parseInt(document.getElementById('matricula').value),
         };
         return data;
     }

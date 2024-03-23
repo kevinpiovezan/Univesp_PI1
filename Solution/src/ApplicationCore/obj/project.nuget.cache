@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1c+MusLcFXUwSPmpVL94GqkhKX94pfZIWRgxbb1/0e0IisM01XkybUK0lvYGQrTj3RaJWHv8q1pe8cJrN9e9jQ==",
+  "dgSpecHash": "APgC1qGkSjX1ehYk1JdOlClG3ILAQnPO9c2u1djl9p5nP0Vp6JcTK5166SPlBJ7UiURIPWaMbEePz6SLJfp+0Q==",
   "success": true,
   "projectFilePath": "/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/ApplicationCore/Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.csproj",
-  "expectedPackageFiles": [
-    "/Users/kevinchristopherpiovezan/.nuget/packages/microsoft.netcore.app.ref/3.1.0/microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
-    "/Users/kevinchristopherpiovezan/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.10/microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

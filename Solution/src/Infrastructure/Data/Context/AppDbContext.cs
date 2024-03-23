@@ -13,5 +13,6 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Data.Context
         public DbSet<Tabela> Tabelas { get; set; }
         public DbSet<Lista> Listas { get; set; }
         public DbSet<Aluno> Alunos { get; set; }
+        
     }
 }

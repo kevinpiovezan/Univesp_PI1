@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "pEGiwg2V18f9lLOI2htongqxNDMQSDIAEZi62eEOtvTMqctOKWHC+7hOjmf34B2CTntil5+DkObMHX/4Y/Dcsw==",
+  "dgSpecHash": "Pslq+j0kPCK/Bssz/0sVxgj3TLSr5jz70bC3nHSRfTVjKTv9dKWdcGbDTP6515g5gXck+HKAkBOE39qBGL7JXQ==",
   "success": true,
   "projectFilePath": "/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/Web/Univesp.CaminhoDoMar.ProjetoIntegrador.Web.csproj",
   "expectedPackageFiles": [
@@ -200,10 +200,7 @@
     "/Users/kevinchristopherpiovezan/.nuget/packages/system.xml.xmldocument/4.3.0/system.xml.xmldocument.4.3.0.nupkg.sha512",
     "/Users/kevinchristopherpiovezan/.nuget/packages/system.xml.xpath/4.3.0/system.xml.xpath.4.3.0.nupkg.sha512",
     "/Users/kevinchristopherpiovezan/.nuget/packages/system.xml.xpath.xmldocument/4.3.0/system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
-    "/Users/kevinchristopherpiovezan/.nuget/packages/webpush-netcore/1.0.2/webpush-netcore.1.0.2.nupkg.sha512",
-    "/Users/kevinchristopherpiovezan/.nuget/packages/microsoft.netcore.app.ref/3.1.0/microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
-    "/Users/kevinchristopherpiovezan/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.10/microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
-    "/Users/kevinchristopherpiovezan/.nuget/packages/microsoft.netcore.app.host.osx-x64/3.1.21/microsoft.netcore.app.host.osx-x64.3.1.21.nupkg.sha512"
+    "/Users/kevinchristopherpiovezan/.nuget/packages/webpush-netcore/1.0.2/webpush-netcore.1.0.2.nupkg.sha512"
   ],
   "logs": []
 }

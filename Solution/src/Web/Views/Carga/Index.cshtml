@@ -117,7 +117,9 @@
             var htmlLista = `<table id='valores_alunos' style='width: 100%' class='table mb-0 table-striped tabela-exibicao table-layout-auto'>
                                 <thead class='bg-green-univesp text-white'>
                                     <tr>
+                                        <th>Status da Matricula</th>
                                         <th>Nome</th>
+                                        <th>Sei</th>
                                         <th>Nome Social</th>
                                         <th>Data de Nascimento</th>
                                         <th>CPF</th>
@@ -144,8 +146,25 @@
             for (let entry of data) {
                 let dataNascimento = new Date(entry.data_Nascimento);
                 let dataEmissao = new Date(entry.data_Emissao);
+                let status;
+                switch (entry.id_Status_Matricula){
+                    case 1:
+                        status = "ATIVA";
+                        break;
+                    case 2:
+                        status = "PAUSADA"; 
+                        break;
+                    case 3:
+                        status = "CONCLUIDA";
+                        break;
+                    case 4:
+                        status = "CANCELADA";
+                        break;
+                }
                 console.log(entry)
-                htmlLista += "<tr><td>" + entry.nome + "</td>";
+                htmlLista += "<tr><td>" + status + "</td>";
+                htmlLista += "<td>" + entry.nome + "</td>";
+                htmlLista += "<td>" + entry.sei + "</td>";
                 htmlLista += "<td>" + entry.nome_Social + "</td>";
                 htmlLista += "<td>" + `${dataNascimento.getDate()}/${dataNascimento.getMonth()+1}/${dataNascimento.getFullYear()}` + "</td>";
                 htmlLista += "<td>" + entry.cpf + "</td>";

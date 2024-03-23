@@ -1,11 +1,16 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.Enums;
 
 namespace Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.Business
 {
     public class Aluno : Entity
     {
+
+        public int Id_Status_Matricula { get; set; }
         public string Cep { get; set; }
         public string Nome { get; set; }
+        public string Sei { get; set; }
         public string Nome_Social { get; set; }
         public string Endereco { get; set; }
         public string Cursos { get; set; }
@@ -29,5 +34,22 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.Business
         public bool Cadastro_SpTrans { get; set; }
         public bool Servidor_Publico { get; set; }
         
+
+        public string GetStatus()
+        {
+            switch (this.Id_Status_Matricula)
+            {
+                case 1:
+                    return EStatus_Matricula.ATIVA.ToString();
+                case 2:
+                    return EStatus_Matricula.PAUSADA.ToString();
+                case 3:
+                    return EStatus_Matricula.CONCLUIDA.ToString();
+                case 4:
+                    return EStatus_Matricula.CANCELADA.ToString();
+            }
+
+            return "ERRO AO RECUPERAR STATUS";
+        }
     }
 }

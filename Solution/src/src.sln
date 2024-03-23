@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Univesp.CaminhoDoMar.ProjetoIntegrador.Web", "Web\Univesp.CaminhoDoMar.ProjetoIntegrador.Web.csproj", "{ACD7A6B2-65C3-403A-AE54-047D6FC9286E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Univesp.CaminhoDoMar.ProjetoIntegrador.Web", "Web\Univesp.CaminhoDoMar.ProjetoIntegrador.Web.csproj", "{4254A077-D718-40DA-ADC5-865176802440}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore", "ApplicationCore\Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.csproj", "{F9F7A03A-DCEF-4F8B-A540-6FB800DB6F46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore", "ApplicationCore\Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.csproj", "{D483C24F-10BE-4867-B4A5-FEE3565837A8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure", "Infrastructure\Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csproj", "{14E21BA4-E195-4048-845D-859F6F91B57C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure", "Infrastructure\Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csproj", "{A9C040FF-9972-471A-A3EE-AB556B39A617}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,23 +15,23 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{ACD7A6B2-65C3-403A-AE54-047D6FC9286E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ACD7A6B2-65C3-403A-AE54-047D6FC9286E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ACD7A6B2-65C3-403A-AE54-047D6FC9286E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ACD7A6B2-65C3-403A-AE54-047D6FC9286E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F9F7A03A-DCEF-4F8B-A540-6FB800DB6F46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F9F7A03A-DCEF-4F8B-A540-6FB800DB6F46}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F9F7A03A-DCEF-4F8B-A540-6FB800DB6F46}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F9F7A03A-DCEF-4F8B-A540-6FB800DB6F46}.Release|Any CPU.Build.0 = Release|Any CPU
-		{14E21BA4-E195-4048-845D-859F6F91B57C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14E21BA4-E195-4048-845D-859F6F91B57C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14E21BA4-E195-4048-845D-859F6F91B57C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14E21BA4-E195-4048-845D-859F6F91B57C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4254A077-D718-40DA-ADC5-865176802440}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4254A077-D718-40DA-ADC5-865176802440}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4254A077-D718-40DA-ADC5-865176802440}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4254A077-D718-40DA-ADC5-865176802440}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D483C24F-10BE-4867-B4A5-FEE3565837A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D483C24F-10BE-4867-B4A5-FEE3565837A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D483C24F-10BE-4867-B4A5-FEE3565837A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D483C24F-10BE-4867-B4A5-FEE3565837A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9C040FF-9972-471A-A3EE-AB556B39A617}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9C040FF-9972-471A-A3EE-AB556B39A617}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9C040FF-9972-471A-A3EE-AB556B39A617}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9C040FF-9972-471A-A3EE-AB556B39A617}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {26AFDC7B-644D-43AD-ACC2-269FFE658DF7}
+		SolutionGuid = {36DF7A87-21EE-4EAD-A11E-709F78E23244}
 	EndGlobalSection
 EndGlobal

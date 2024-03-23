@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "40ckdxiNv/02HvKGDyhuq4xpzzcS6i6MFpMh4QsSFdNCKtYLLN7KAyHikvvHAHnXz55gudvsqeNgxGEVQ4q1ng==",
+  "dgSpecHash": "FoeJBXz8i/LSdau1z4FaNPxLgWiQ95VHsbn1YW/qFj2MdDq2KYtkaFcOulXFDb6yHtfDO0FVG5z1sMG9/5TPZQ==",
   "success": true,
   "projectFilePath": "/Users/kevinchristopherpiovezan/Documents/Univesp/Projeto_Integrador_1/Univesp_PI1/Solution/src/Infrastructure/Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -100,9 +100,7 @@
     "/Users/kevinchristopherpiovezan/.nuget/packages/system.xml.readerwriter/4.3.0/system.xml.readerwriter.4.3.0.nupkg.sha512",
     "/Users/kevinchristopherpiovezan/.nuget/packages/system.xml.xmldocument/4.3.0/system.xml.xmldocument.4.3.0.nupkg.sha512",
     "/Users/kevinchristopherpiovezan/.nuget/packages/system.xml.xpath/4.3.0/system.xml.xpath.4.3.0.nupkg.sha512",
-    "/Users/kevinchristopherpiovezan/.nuget/packages/system.xml.xpath.xmldocument/4.3.0/system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
-    "/Users/kevinchristopherpiovezan/.nuget/packages/microsoft.netcore.app.ref/3.1.0/microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
-    "/Users/kevinchristopherpiovezan/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.10/microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512"
+    "/Users/kevinchristopherpiovezan/.nuget/packages/system.xml.xpath.xmldocument/4.3.0/system.xml.xpath.xmldocument.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }
