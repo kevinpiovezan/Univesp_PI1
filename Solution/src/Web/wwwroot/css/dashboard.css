@@ -100,6 +100,22 @@ canvas {
     background: var(--clr-green);
 }
 
+#total-alunos-pausados {
+    background: #0f6674;
+}
+
+#total-alunos-ativos {
+    background: #fd7e14;
+}
+
+#total-alunos-cancelados {
+    background: #bd2130;
+}
+
+#total-alunos-concluidos {
+    background: #34ce57;
+}
+
 #total-alunos-escola-publica {
     background: rgb(109, 50, 168);
 }

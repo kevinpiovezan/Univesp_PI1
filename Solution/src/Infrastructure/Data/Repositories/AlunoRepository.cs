@@ -42,6 +42,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.Data.Repositorie
                 where 
                     (filters.Nome == "" || a.Nome.ToLower().Contains(filters.Nome.ToLower())) &&
                     (filters.Sei == "" || a.Sei.ToLower().Contains(filters.Sei.ToLower())) &&
+                    (filters.Eixo == "" || a.Eixo.ToLower().Contains(filters.Eixo.ToLower())) &&
                     (filters.Cpf == "" || filters.Cpf == a.Cpf) &&
                     (filters.Status_Matricula == 0|| a.Id_Status_Matricula == filters.Status_Matricula) &&
                     (!filters.Professor || a.Professor == filters.Professor) &&

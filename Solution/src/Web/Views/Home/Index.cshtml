@@ -1,4 +1,5 @@
-﻿@model Univesp.CaminhoDoMar.ProjetoIntegrador.Web.Models.HomeModel
+﻿@using Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.Enums
+@model Univesp.CaminhoDoMar.ProjetoIntegrador.Web.Models.HomeModel
 @{
     ViewData["Title"] = "Home";
 
@@ -17,14 +18,42 @@
             <i class="fas fa-user card-icon"></i>
             <div class="card-data">
                 <h5> @Model.Alunos.Count() </h5>
-                <p class="p-1">Total de Alunos </p>
+                <p class="p-1">Total de Alunos Matriculados</p>
             </div>
         </section>
+        <section class="card-dashboard" id="total-alunos-ativos">
+            <i class="fas fa-user card-icon"></i>
+            <div class="card-data">
+                <h5> @Model.Alunos.Count(c => c.Id_Status_Matricula == (int)EStatus_Matricula.ATIVA) </h5>
+                <p class="p-1">Total de Alunos com matriculas ativas</p>
+            </div>
+        </section>
+        <section class="card-dashboard" id="total-alunos-pausados">
+             <i class="fas fa-user card-icon"></i>
+             <div class="card-data">
+                 <h5> @Model.Alunos.Count(c => c.Id_Status_Matricula == (int)EStatus_Matricula.PAUSADA) </h5>
+                 <p class="p-1">Total de Alunos com matriculas pausadas</p>
+             </div>
+        </section> 
+        <section class="card-dashboard" id="total-alunos-concluidos">
+                     <i class="fas fa-user card-icon"></i>
+                     <div class="card-data">
+                         <h5> @Model.Alunos.Count(c => c.Id_Status_Matricula == (int)EStatus_Matricula.CONCLUIDA) </h5>
+                         <p class="p-1">Total de Alunos com matriculas concluídas</p>
+                     </div>
+        </section> 
+        <section class="card-dashboard" id="total-alunos-cancelados">
+             <i class="fas fa-user card-icon"></i>
+             <div class="card-data">
+                 <h5> @Model.Alunos.Count(c => c.Id_Status_Matricula == (int)EStatus_Matricula.CANCELADA) </h5>
+                 <p class="p-1">Total de Alunos com matriculas canceladas</p>
+             </div>
+        </section>         
         <section class="card-dashboard" id="total-alunos-escola-publica">
             <i class="fas fa-user card-icon"></i>
             <div class="card-data">
                 <h5> @Model.Alunos.Count(c => c.EnsinoMedio_Escola_Publica) </h5>
-                <p class="p-1">Alunos ensino médio em escola pública</p>
+                <p class="p-1">Alunos que cursaram ensino médio em escola pública</p>
             </div>
         </section>
         <section class="card-dashboard" id="total-alunos-faculdade">
