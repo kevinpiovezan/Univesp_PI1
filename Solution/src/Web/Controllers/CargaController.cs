@@ -56,7 +56,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorWeb.Controllers
         {
             return Json(new
             {
-                alunos = await _alunoRepository.ObterTodos(),
+                alunos = _alunoRepository.ObterTodos().Result.OrderBy(o => o.Nome).ToList(),
             });
         }
 
@@ -101,6 +101,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorWeb.Controllers
                     aluno_banco.Celular = a.Celular;
                     aluno_banco.Tel_Fixo = a.Tel_Fixo;
                     aluno_banco.Professor = a.Professor;
+                    aluno_banco.Data_Emissao = a.Data_Emissao;
                     aluno_banco.Autorizacao_Imagem = a.Autorizacao_Imagem;
                     aluno_banco.Cadastro_SpTrans = a.Cadastro_SpTrans;
                     aluno_banco.Servidor_Publico = a.Servidor_Publico;

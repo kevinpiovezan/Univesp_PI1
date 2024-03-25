@@ -257,8 +257,8 @@
         }).fail(function (xhr, status, error) {
             toggleLoading();
 
-            // toastr.error(xhr.responseText);
-            toastr.error("Usuário não tem as permissões necessárias para realizar a carga");
+            //toastr.error(xhr.responseText);
+            toastr.error("Houve um erro em algum campo do arquivo, verifique se todos os campos são do tipo texto");
         });
     }
 
