@@ -316,9 +316,17 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
                     Ultima_Atualizacao = DateTime.Now
                 };
 
+                if (a.Id_Status_Matricula == 0)
+                {
+                    critica.Criticas.Add("O Status da matricula adicionado não existe");
+                }
                 if (a.Nome == "")
                 {
-                    critica.Criticas.Add("Nome não pode ficar vazio");
+                    critica.Criticas.Add("'Nome' não pode ficar vazio");
+                }
+                if (a.Sei == "")
+                {
+                    critica.Criticas.Add("'Sei' não pode ficar vazio");
                 }
                 if (a.Data_Nascimento == DateTime.MinValue)
                 {
@@ -328,9 +336,13 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
                 {
                     critica.Criticas.Add("O Rg não pode ser vazio");
                 }
+                if (a.UF == "")
+                {
+                    critica.Criticas.Add("O campo UF não pode ser vazio");
+                }
                 if (a.Cpf == "")
                 {
-                    critica.Criticas.Add("CPF não pode ficar vazio");
+                    critica.Criticas.Add("'CPF' não pode ficar vazio");
                 }
                 if (!rx_cpf.IsMatch(a.Cpf))
                 {
@@ -338,46 +350,53 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
                 }
                 if (a.Email == "")
                 {
-                    critica.Criticas.Add("O e-mail não pode ficar vazio");
+                    critica.Criticas.Add("'E-mail' não pode ficar vazio");
                 }
                 if (a.Endereco == "")
                 {
-                    critica.Criticas.Add("O endereço não pode ficar vazio");
+                    critica.Criticas.Add("'Endereço' não pode ficar vazio");
                 }
                 if (a.Cep == "")
                 {
-                    critica.Criticas.Add("O Cep não pode ficar vazio");
+                    critica.Criticas.Add("'Cep' não pode ficar vazio");
                 }
                 if (a.Celular == "")
                 {
-                    critica.Criticas.Add("O Celular não pode ficar vazio");
+                    critica.Criticas.Add("'Celular' não pode ficar vazio");
                 }
-                
+                if (a.Genero == "")
+                {
+                    critica.Criticas.Add("'Gênero' não pode ficar vazio");
+                }                
                 if (a.Raca_Cor_Etnia == "")
                 {
-                    critica.Criticas.Add("Raça/Cor/Etnia não pode ficar vazio");
+                    critica.Criticas.Add("'Raça/Cor/Etnia' não pode ficar vazio");
                 }
-                if (planilha.Cells[r, 15].Text == "")
+                if (planilha.Cells[r, 17].Text == "")
                 {
                     critica.Criticas.Add("'Cursou Ensino Médio em Escola Pública?' não pode ficar vazio");
                 }
-                if (planilha.Cells[r, 16].Text == "")
+                if (planilha.Cells[r, 18].Text == "")
                 {
                     critica.Criticas.Add("'Já cursou alguma faculdade?' não pode ficar vazio");
                 }
-                if (planilha.Cells[r, 18].Text == "")
+                if (planilha.Cells[r, 20].Text == "")
                 {
                     critica.Criticas.Add("'É professor?' não pode ficar vazio");
                 }
-                if (planilha.Cells[r, 19].Text == "")
+                if (planilha.Cells[r, 21].Text == "")
                 {
                     critica.Criticas.Add("'É Servidor Público?' não pode ficar vazio");
                 }
-                if (planilha.Cells[r, 21].Text == "")
+                if (planilha.Cells[r, 22].Text == "")
+                {
+                    critica.Criticas.Add("'Eixo' não pode ficar vazio");
+                }
+                if (planilha.Cells[r, 23].Text == "")
                 {
                     critica.Criticas.Add("'Cadastro Bilhete de estudante(SPTrans)' não pode ficar vazio");
                 }
-                if (planilha.Cells[r, 22].Text == "")
+                if (planilha.Cells[r, 24].Text == "")
                 {
                     critica.Criticas.Add("'Autorização de Imagem' não pode ficar vazio");
                 }
