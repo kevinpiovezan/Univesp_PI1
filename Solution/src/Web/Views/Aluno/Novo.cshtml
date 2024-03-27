@@ -1,0 +1,431 @@
+﻿@{
+    ViewData["Title"] = "Novo Aluno";
+}
+
+<div class="content-title d-flex justify-content-between">
+    <button type="button" id="btn_voltar" onclick="location.href='/busca'" class="btn mr-3 my-1 mb-2 w-150 bg-blue-gradient shadow text-white font-weight-bold d-inline-block fas fa-arrow-left" style="background-color:#012C33;max-height:48px ;border-radius: 50%;font-size: 1.5rem;padding: 0.75rem;"></button>
+    <h4 class="page-title">
+        Novo Aluno
+    </h4>
+    <div></div>
+</div>
+
+<section id="secao-dados-gerais" class="uniceu-section rounded-table mt-2">
+    <div class="d-flex justify-content-between">
+        <div class="d-flex">
+            <i class="fas fa-file-contract icon fa-fw" style="font-size:1.5rem"></i>
+            <h4 class="section-title">Dados</h4>
+        </div>
+    </div>
+    <div class="section-content">
+        <div class="bloco-dados-gerais">
+            <div class="form-group">
+                <label for="nome">Nome completo:</label>
+                <input id="nome" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="nome-social">Nome Social:</label>
+                <input id="nome-social" type="text" class="form-control" placeholder="Campo opcional">
+            </div>
+            <div class="form-group">
+                <label for="sei">Sei:</label>
+                <input id="sei" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="data-nascimento">Data Nascimento:</label>
+                <input id="data-nascimento" type="date" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="cpf">CPF:</label>
+                <input id="cpf" type="text" class="form-control" placeholder="Ex: 123.456.789-00">
+            </div>
+            <div class="form-group">
+                <label for="rg">RG:</label>
+                <input id="rg" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="uf">UF do RG:</label>
+                <select class="form-control" id="uf" name="uf">
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                    <option value="EX">Estrangeiro</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="data-emissao">Data de emissão:</label>
+                <input id="data-emissao" type="date" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input id="email" type="email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="celular">Celular:</label>
+                <input id="celular" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="telefone-fixo">Telefone Fixo:</label>
+                <input id="telefone-fixo" type="text" class="form-control" placeholder="Campo opcional">
+            </div>
+            <div class="form-group">
+                <label for="endereco">Endereco:</label>
+                <input id="endereco" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="cep">CEP:</label>
+                <input id="cep" type="text" class="form-control" placeholder="Ex: 12345-678">
+            </div>
+            <div class="form-group">
+                <label for="genero">Gênero: </label>
+                <select class="form-control" id="genero">
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                </select>
+            </div>
+        </div>
+        <div class="bloco-dados-gerais">   
+            <div class="form-group">
+                <label for="matricula">Status da Matrícula: </label>
+                <select class="form-control" id="matricula">
+                    <option value="1">ATIVA</option>
+                    <option value="2">PAUSADA</option>
+                    <option value="3">CONCLUÍDA</option>
+                    <option value="4">CANCELADA</option>
+                </select>
+            </div>         
+            <div class="form-group">
+                <label for="raca" >Raça/Cor/Etnia: </label>
+                <select id="raca" class="form-control">
+                    <option value="Branca">Branca</option>
+                    <option value="Preta">Preta</option>
+                    <option value="Parda">Parda</option>
+                    <option value="Indigena">Indigena</option>
+                    <option value="Amarela">Amarela</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ensino-medio">Cursou Ensino Médio em Escola Pública: </label>
+                <select class="form-control" id="ensino-medio">
+                    <option value="0">Não</option>
+                    <option value="1">Sim</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="faculdade">Já cursou alguma faculdade: </label>
+                <select class="form-control" id="faculdade" >
+                    <option value="0">Não</option>
+                    <option value="1">Sim</option>
+                </select>
+            </div>
+                <div class="form-group">
+                    <label for="cursos">Se sim, quais cursos: </label>
+                    <input type="text" id="cursos" class="form-control" placeholder="Preencha apenas caso tenha marcado 'Sim' na pergunta anterior"/>
+                </div>   
+            <div class="form-group">
+                <label for="professor">É professor: </label>
+                <select class="form-control" id="professor">
+                    <option value="0">Não</option>
+                    <option value="1">Sim</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="servidor-publico">É Servidor Público: </label>
+                <select class="form-control" id="servidor-publico">
+                    <option value="0">Não</option>
+                    <option value="1">Sim</option>
+                </select>
+            </div>   
+            <div class="form-group">
+                <label for="eixo">Eixo do Aluno: </label>
+                <select class="form-control" id="eixo">
+                    <option value="Licenciatura">Licenciatura</option>
+                    <option value="Computação">Computação</option>
+                    <option value="Negocios">Negócios</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="bilhete-unico">Cadastro Bilhete de estudante(SPTrans): </label>
+                <select class="form-control" id="bilhete-unico">
+                    <option value="0">Não</option>
+                    <option value="1">Sim</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="autorizacao-imagem">Autorização de imagem: </label>
+                <select class="form-control" id="autorizacao-imagem">
+                    <option value="0">Não</option>
+                    <option value="1">Sim</option>
+                </select>
+            </div>   
+        </div>
+    </div>
+</section>
+<div class="form-group d-flex">
+    <button type="button" id="adicionar-aluno" onclick="adicionarAluno();" class="btn btn-red form-control">
+        Adicionar Aluno
+    </button>
+</div>
+
+<style>
+    .uniceu-section {
+        margin: 1rem 0 .75rem 0;
+    }
+    
+
+    /*#region Dados Gerais*/
+    .section-content {
+        padding: 0 2rem;
+        position: relative;
+    }
+   
+
+    .uniceu-section .table-data {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        position: relative;
+    }
+
+    .form-group {
+        flex: 0 0 100%;
+        margin-bottom: 5px;
+    }
+
+    .bloco-dados-gerais {
+        flex-basis: calc(50% - 15px);
+    }
+
+    .uniceu-section .section-content {
+        padding: 0 1rem;
+    }
+
+    .item-title {
+        display: inline;
+        font-weight: bold;
+        color: var(--smartagro-blue);
+        margin-right: 5px;
+    }
+
+    .item-data {
+        display: inline;
+        word-break: break-all;
+    }
+
+    .abas h5{
+        white-space: nowrap;
+    }
+
+    /*#endregion*/
+
+    .rounded-table {
+        border-radius: 5px 5px 0 0;
+    }
+
+    .modal-header {
+        padding: 0.35rem 1rem;
+    }
+
+    .modal-title {
+        font-size: 1.25rem;
+    }
+
+    .modal-header .close {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        top: 3px;
+    }
+
+    
+    .dataTables_wrapper {
+        box-shadow: none;
+    }
+
+   
+    .modal-content {
+        overflow-y:auto;
+        overflow-x: hidden;
+    }
+
+    .btn-excel {
+        position: absolute;
+        right: 5px;
+        top: -10px;
+        z-index: 100;
+    }
+
+        .btn-excel:focus {
+            outline: none;
+        }
+
+        .btn-excel img {
+            height: 48px;
+            width: 48px;
+            image-rendering: pixelated;
+        }
+
+    @@media screen and (max-width: 776px) {
+        .form-group {
+            flex: 0 0 100%;
+        }
+
+        .bloco-dados-gerais {
+            flex-basis: 100%;
+        }
+    }
+</style>
+
+<script src="~/lib/data-tables/datatables.js"></script>
+<link href="~/lib/data-tables/datatables.css" rel="stylesheet" />
+
+<script>    
+   
+
+    const adicionarAluno = () => {
+        let nome = $("#nome").val();
+        let nome_Social = $("#nome-social").val();
+        let sei = $("#sei").val();
+        let data_nascimento = $("#data-nascimento").val();
+        let cpf = $("#cpf").val();
+        let rg = $("#rg").val();
+        let uf = $("#uf").val();
+        let data_emissao = $("#data-emissao").val();
+        let email = $("#email").val();
+        let celular = $("#celular").val();
+        let tel_fixo = $("#telefone-fixo").val();
+        let endereco = $("#endereco").val();
+        let cep = $("#cep").val();        
+        let genero = $("#genero").val();        
+        let id_Status_Matricula = parseInt($("#matricula").val())
+        let raca = $("#raca").val();        
+        let ensino_medio = $("#ensino-medio").val() === "1" ? true : false;
+        let faculdade = $("#faculdade").val()  === "1" ? true : false;
+        let cursos = $("#cursos").val();
+        let professor = $("#professor").val()  === "1" ? true : false;        
+        let servidor_publico = $("#servidor-publico").val()  === "1" ? true : false;
+        let eixo = $("#eixo").val();        
+        let cadastro_SpTrans = $("#bilhete-unico").val()  === "1" ? true : false;
+        let autorizacao_imagem = $("#autorizacao-imagem").val()  === "1" ? true : false;
+       
+        if(nome === ""){
+            toastr.error("'Nome' não pode estar vazio");
+            return;
+        }
+        
+        if(sei === ""){
+            toastr.error("'Sei' não pode estar vazio");
+            return;
+        }
+
+        if(cpf === ""){
+            toastr.error("'CPF' não pode estar vazio");
+            return;
+        }
+        
+        if(rg === ""){
+            toastr.error("'RG' não pode estar vazio");
+            return;
+        }
+       
+        
+        if(email === ""){
+            toastr.error("'E-mail' não pode estar vazio");
+            return;
+        }
+        
+        if(celular === ""){
+            toastr.error("'Celular' não pode estar vazio");
+            return;
+        }
+        
+        if(endereco === ""){
+            toastr.error("'Endereco' não pode estar vazio");
+            return;
+        }
+        
+        if(cep === ""){
+            toastr.Error("'CEP' não pode estar vazio");
+            return;
+        }        
+        
+        let data = {
+            id_Status_Matricula: id_Status_Matricula,
+            sei:sei,
+            cep: cep,
+            nome: nome,
+            nome_Social: nome_Social,
+            endereco: endereco,      
+            cursos:cursos, 
+            eixo:eixo, 
+            genero:genero,
+            raca_Cor_Etnia: raca, 
+            cpf:cpf, 
+            rg:rg, 
+            uf:uf, 
+            email: email,
+            celular: celular,
+            tel_fixo: tel_fixo,
+            data_emissao:data_emissao,
+            data_nascimento:data_nascimento, 
+            ensinoMedio_Escola_Publica: ensino_medio,
+            cursou_Faculdade:faculdade,
+            professor: professor,            
+            autorizacao_imagem: autorizacao_imagem,
+            cadastro_SpTrans: cadastro_SpTrans,
+            servidor_Publico: servidor_publico
+        }
+        console.log(data);
+        toggleLoading();
+                $.ajax({
+                    type: "POST",
+                    url: `/aluno/adicionar/`,
+                    dataType: "json",
+                    contentType: "application/json",
+                    data: JSON.stringify(data),
+                }).done(function (data) {
+                    toggleLoading();
+                    toastr.success("Dados do aluno inseridos com sucesso");
+                    location.href = "/aluno/"+data;
+                }).fail(function (xhr, status, error) {
+                    toggleLoading()
+                    toastr.error(xhr.responseText);
+                });
+    }    
+
+    $(function () {
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $('[data-toggle="popover"]').popover({ html: true });
+       
+    })   
+
+    $(document).ready(() => {
+      
+    })
+</script>

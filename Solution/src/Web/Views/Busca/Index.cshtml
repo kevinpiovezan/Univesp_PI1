@@ -48,43 +48,49 @@
         <div class="form-group col-lg-3 col-12">
             <label for="professor">É Professor:</label>
             <select id="professor" name="professor" class="form-control">
+                <option value="" selected>Selecione</option>
                 <option value="sim">Sim</option>
-                <option value="nao" selected>Não</option>
+                <option value="nao">Não</option>
             </select>
         </div>
         <div class="form-group col-lg-3 col-12">
             <label for="ensinomedio_Escola_Publica">Ensino Médio em Escola Pública:</label>
             <select id="ensinomedio_Escola_Publica" name="ensinomedio_Escola_Publica" class="form-control">
+                <option value="" selected>Selecione</option>
                 <option value="sim">Sim</option>
-                <option value="nao" selected>Não</option>
+                <option value="nao">Não</option>
             </select>
         </div>
         <div class="form-group col-lg-3 col-12">
             <label for="faculdade">Já cursou alguma faculdade:</label>
             <select id="faculdade" name="faculdade" class="form-control">
+                <option value="" selected>Selecione</option>
                 <option value="sim">Sim</option>
-                <option value="nao" selected>Não</option>
+                <option value="nao">Não</option>
             </select>
         </div>
         <div class="form-group col-lg-3 col-12">
             <label for="servidor_publico">É Servidor Público:</label>
             <select id="servidor_publico" name="servidor_publico" class="form-control">
+                <option value="" selected>Selecione</option>
                 <option value="sim">Sim</option>
-                <option value="nao" selected>Não</option>
+                <option value="nao">Não</option>
             </select>
         </div>
         <div class="form-group col-lg-3 col-12">
             <label for="sptrans">Cadastro Bilhete Estudante:</label>
             <select id="sptrans" name="sptrans" class="form-control">
+                <option value="" selected>Selecione</option>
                 <option value="sim">Sim</option>
-                <option value="nao" selected>Não</option>
+                <option value="nao">Não</option>
             </select>
         </div>
         <div class="form-group col-lg-3 col-12">
             <label for="autorizacao_imagem">Autorização de Imagem:</label>
             <select id="autorizacao_imagem" name="autorizacao_imagem" class="form-control">
+                <option value="" selected>Selecione</option>
                 <option value="sim">Sim</option>
-                <option value="nao" selected>Não</option>
+                <option value="nao">Não</option>
             </select>
         </div>
         
@@ -201,15 +207,70 @@
     }
 
     const getFilters = () => {
+        let professor = document.getElementById('professor').value;
+        let ensinomedio_Escola_Publica = document.getElementById('ensinomedio_Escola_Publica').value;
+        let cursou_Faculdade = document.getElementById('faculdade').value;
+        let servidor_Publico = document.getElementById('servidor_publico').value;
+        let cadastro_SpTrans = document.getElementById('sptrans').value;
+        let autorizacao_Imagem = document.getElementById('autorizacao_imagem').value;
+        
+        if(professor === "sim"){
+            professor = true;
+        } else if (professor === "nao"){
+            professor = false;
+        } else {
+            professor = null;
+        }
+        
+        if(ensinomedio_Escola_Publica === "sim"){
+            ensinomedio_Escola_Publica = true;
+        } else if (ensinomedio_Escola_Publica === "nao"){
+            ensinomedio_Escola_Publica = false;
+        } else {
+            ensinomedio_Escola_Publica = null;
+        }
+
+        if(cursou_Faculdade === "sim"){
+            cursou_Faculdade = true;
+        } else if (cursou_Faculdade === "nao"){
+            cursou_Faculdade = false;
+        } else {
+            cursou_Faculdade = null;
+        }
+        
+        if(servidor_Publico === "sim"){
+            servidor_Publico = true;
+        } else if (servidor_Publico === "nao"){
+            servidor_Publico = false;
+        } else {
+            servidor_Publico = null;
+        }
+        
+        if(cadastro_SpTrans === "sim"){
+            cadastro_SpTrans = true;
+        } else if (cadastro_SpTrans === "nao"){
+            cadastro_SpTrans = false;
+        } else {
+            cadastro_SpTrans = null;
+        }
+        
+        if(autorizacao_Imagem === "sim"){
+            autorizacao_Imagem = true;
+        } else if (autorizacao_Imagem === "nao"){
+            autorizacao_Imagem = false;
+        } else {
+            autorizacao_Imagem = null;
+        }
+        
         data = {
             nome: document.getElementById('nome').value,
             cpf: document.getElementById('cpf').value,
-            professor: document.getElementById('professor').value === "sim" ? true : false,
-            ensinomedio_Escola_Publica: document.getElementById('ensinomedio_Escola_Publica').value === "sim" ? true : false,
-            cursou_Faculdade: document.getElementById('faculdade').value === "sim" ? true : false,
-            servidor_Publico: document.getElementById('servidor_publico').value === "sim" ? true : false,
-            cadastro_SpTrans: document.getElementById('sptrans').value === "sim" ? true : false,
-            autorizacao_Imagem: document.getElementById('autorizacao_imagem').value === "sim" ? true : false,
+            professor: professor,
+            ensinomedio_Escola_Publica: ensinomedio_Escola_Publica,
+            cursou_Faculdade:cursou_Faculdade,
+            servidor_Publico: servidor_Publico,
+            cadastro_SpTrans: cadastro_SpTrans,
+            autorizacao_Imagem: autorizacao_Imagem,
             sei: document.getElementById('sei').value,
             status_Matricula: parseInt(document.getElementById('matricula').value),
             eixo: document.getElementById('eixo').value,

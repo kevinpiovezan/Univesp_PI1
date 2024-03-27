@@ -14,23 +14,23 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/img/logos/favicon-16x16.png">
 
     <!-- CSS  -->
-    <link rel="stylesheet" href="~/css/utils.css" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" defer />
-    <link rel="stylesheet" href="~/css/base_estrutura.css" defer />
-    <link rel="stylesheet" href="~/css/menu.css" defer />
-    <link rel="stylesheet" href="~/css/colors.css" />
+    <link rel="stylesheet" href="/css/utils.css" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" defer />
+    <link rel="stylesheet" href="/css/base_estrutura.css" defer />
+    <link rel="stylesheet" href="/css/menu.css" defer />
+    <link rel="stylesheet" href="/css/colors.css" />
     <link href="/lib/toastr/toastr.min.css" rel="stylesheet" defer />
-    <link href="~/lib/fontawesome-free-5.15.2-web/css/all.min.css" rel="stylesheet" defer> <!--Carrega os ícones do FontAwesome-->
-    <link rel="stylesheet" href="~/css/site.css" defer />
+    <link href="/lib/fontawesome-free-5.15.2-web/css/all.min.css" rel="stylesheet" defer> <!--Carrega os ícones do FontAwesome-->
+    <link rel="stylesheet" href="/css/site.css" defer />
     <!-- Pre-rendered Scripts -->
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/site.js"></script>
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/js/site.js"></script>
 
     <!-- Post-rendered Scripts -->
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/lib/toastr/toastr.min.js"></script>
-    <script src="~/lib/bootbox/bootbox.all.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/toastr/toastr.min.js"></script>
+    <script src="/lib/bootbox/bootbox.all.min.js"></script>
 </head>
 <body>
     <div class="d-flex" id="wrapper">
@@ -50,6 +50,10 @@
                     <i class="fas fa-users main-menu-icon fa-fw"></i>
                     Carga de Alunos
                 </a>
+                <a class="list-group-item list-group-item-action bg-light" asp-controller="aluno" asp-action="Novo">
+                    <i class="fas fa-plus main-menu-icon fa-fw"></i>
+                    Novo Aluno
+                </a>
                 <a class="list-group-item list-group-item-action bg-light" href="/busca">
                     <i class="fas fa-search main-menu-icon fa-fw"></i>
                     Busca
@@ -63,7 +67,7 @@
                 @*     Logout *@
                 @* </a> *@
             </div>
-            <div class="version">Versão 25012024.1206</div>
+            <div class="version">Versão 27012024.1206</div>
         </div>
 
         <!-- Page Content-->

@@ -32,6 +32,20 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorWeb.Controllers
             return View(model);
         }
         
+        [Route("novo-aluno")]
+        public async Task<IActionResult> Novo()
+        {
+            // var aluno = await _alunoRepository.ObtemAlunoPorCPF(cpf);
+            // if (aluno == null)
+            //     return View("NaoEncontrado");
+            // var usuarios = await _usuarioRepository.ObterTodos();
+            // var model = new AlunoViewModel();
+            // model.Aluno = aluno;
+            // model.Usuarios = usuarios;
+            // model.UsuarioLogado = usuarioLogado;
+            return View();
+        }
+        
         [HttpPost("editar/{idAluno}")]
         public async Task<IActionResult> EditarAluno([FromRoute] int idAluno, [FromBody] Aluno dadosAluno)
         {
@@ -53,5 +67,28 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorWeb.Controllers
             return Json("Ok");
         }
         
+        [HttpPost("adicionar")]
+        public async Task<IActionResult> NovoAluno([FromBody] Aluno dadosAluno)
+        {
+            var alunoExiste = await _alunoRepository.ObtemAlunoPorCPF(dadosAluno.Cpf);
+            if (alunoExiste != null)
+            {
+                return StatusCode(403, "Já existe um aluno cadastrado com esse CPF, caso queira alterar os dados edite pela página do aluno");
+            }
+            
+            if (dadosAluno.Data_Emissao > DateTime.Today)
+            {
+                return StatusCode(403, "Data de Emissão não pode ser maior que a data atual");
+            }
+            
+            if (dadosAluno.Data_Nascimento > DateTime.Today)
+            {
+                return StatusCode(403, "Data de Nascimento não pode ser maior que a data atual");
+            }
+            
+            dadosAluno.Ultima_Atualizacao = DateTime.Now;
+            await _alunoRepository.Adicionar(dadosAluno);
+            return Json(dadosAluno.Cpf);
+        }
     }
 }
