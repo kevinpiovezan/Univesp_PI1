@@ -22,12 +22,12 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.Data.Repositorie
                 where 
                     (filters.Nome == "" || a.Nome.ToLower().Contains(filters.Nome.ToLower())) &&
                     (filters.Cpf == "" || filters.Cpf == a.Cpf) &&
-                    (!filters.Professor || a.Professor == filters.Professor) &&
-                    (!filters.Autorizacao_Imagem || a.Autorizacao_Imagem == filters.Autorizacao_Imagem) &&
-                    (!filters.Cursou_Faculdade || a.Cursou_Faculdade == filters.Cursou_Faculdade) &&
-                    (!filters.EnsinoMedio_Escola_Publica || a.EnsinoMedio_Escola_Publica == filters.EnsinoMedio_Escola_Publica) &&
-                    (!filters.Cadastro_SpTrans || a.Cadastro_SpTrans == filters.Cadastro_SpTrans) &&
-                    (!filters.Servidor_Publico || a.Servidor_Publico == filters.Servidor_Publico)
+                    (filters.Professor == null || a.Professor == filters.Professor) &&
+                    (filters.Autorizacao_Imagem == null|| a.Autorizacao_Imagem == filters.Autorizacao_Imagem) &&
+                    (filters.Cursou_Faculdade == null|| a.Cursou_Faculdade == filters.Cursou_Faculdade) &&
+                    (filters.EnsinoMedio_Escola_Publica == null|| a.EnsinoMedio_Escola_Publica == filters.EnsinoMedio_Escola_Publica) &&
+                    (filters.Cadastro_SpTrans == null|| a.Cadastro_SpTrans == filters.Cadastro_SpTrans) &&
+                    (filters.Servidor_Publico == null|| a.Servidor_Publico == filters.Servidor_Publico)
                 select a).AsNoTracking().Distinct().ToListAsync();
         }
 
@@ -45,12 +45,12 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.Data.Repositorie
                     (filters.Eixo == "" || a.Eixo.ToLower().Contains(filters.Eixo.ToLower())) &&
                     (filters.Cpf == "" || filters.Cpf == a.Cpf) &&
                     (filters.Status_Matricula == 0|| a.Id_Status_Matricula == filters.Status_Matricula) &&
-                    (!filters.Professor || a.Professor == filters.Professor) &&
-                    (!filters.Autorizacao_Imagem || a.Autorizacao_Imagem == filters.Autorizacao_Imagem) &&
-                    (!filters.Cursou_Faculdade || a.Cursou_Faculdade == filters.Cursou_Faculdade) &&
-                    (!filters.EnsinoMedio_Escola_Publica || a.EnsinoMedio_Escola_Publica == filters.EnsinoMedio_Escola_Publica) &&
-                    (!filters.Cadastro_SpTrans || a.Cadastro_SpTrans == filters.Cadastro_SpTrans) &&
-                    (!filters.Servidor_Publico || a.Servidor_Publico == filters.Servidor_Publico)
+                    (filters.Professor == null || a.Professor == filters.Professor) &&
+                    (filters.Autorizacao_Imagem == null || a.Autorizacao_Imagem == filters.Autorizacao_Imagem) &&
+                    (filters.Cursou_Faculdade == null || a.Cursou_Faculdade == filters.Cursou_Faculdade) &&
+                    (filters.EnsinoMedio_Escola_Publica == null || a.EnsinoMedio_Escola_Publica == filters.EnsinoMedio_Escola_Publica) &&
+                    (filters.Cadastro_SpTrans == null || a.Cadastro_SpTrans == filters.Cadastro_SpTrans) &&
+                    (filters.Servidor_Publico == null || a.Servidor_Publico == filters.Servidor_Publico)
 
                 select new BuscaRes()
                 {
