@@ -62,29 +62,24 @@ https://github.com/kellydatabase/Teste/assets/122828003/863a259f-0af6-4fdf-ae60-
 
 # Como executar o projeto
 
-## Back end
-Pré-requisitos: (VALIDAR INFORMAÇÕES)
+## Aplicação e banco de dados 
+Pré-requisitos:
 
 ```bash
-# clonar repositório
+# Clonar repositório
 git clone https://github.com/kevinpiovezan/Univesp_PI1
 
-```
-
-## Front end web
-Pré-requisitos: (VALIDAR INFORMAÇÕES)
-
-```bash
-# clonar repositório
-git clone clone https://github.com/kevinpiovezan/Univesp_PI1
-
-# instalação do componente Docker
+# Instalação do componente Docker desktop(Windows e Mac) ou docker daemon e docker-compose(Linux):
 https://docs.docker.com/get-docker/
 
-# executar o projeto: Acessar a pasta do projeto .\Solution\src e no git bash rodar o comando
-docker-compose up --build --remove-orphans
+# Executando o projeto
+# Abra uma instância de algum terminal como "bash","git bash" ou "zsh" dentro da pasta onde foi clonada a aplicação, e navegue até a pasta "src" como no exemplo abaixo:
+cd ./Solution/src
 
-# Após a execução bem-sucedida, acessar a aplicação através do navegador utilizando o seguinte endereço:
+# Agora iremos executar o comando que irá subir tanto a aplicação quanto o banco de dados:
+docker-compose up --build --remove-orphans --force-recreate
+
+# Após a execução bem-sucedida, acessar a aplicação através do navegador de sua preferência utilizando o seguinte endereço:
 http://localhost:8080
 ```
 
