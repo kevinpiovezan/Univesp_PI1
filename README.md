@@ -104,7 +104,7 @@ http://localhost:8080
 - Geinne Monteiro de Souza Guerra (Orientadora do Projeto Integrador I - Univesp)
 
 ## Licença
-- Este projeto está licenciado sob a MIT License. [![NPM](https://img.shields.io/npm/l/react)](https://github.com/kellydatabase/Univesp_PI1/blob/main/LICENSE) 
+- Este projeto está licenciado sob a MIT License. [![NPM](https://img.shields.io/npm/l/react)](https://github.com/kevinpiovezan/Univesp_PI1/blob/main/LICENSE) 
 ```bash
 https://github.com/kellydatabase/Univesp_PI1/blob/main/LICENSE
 
