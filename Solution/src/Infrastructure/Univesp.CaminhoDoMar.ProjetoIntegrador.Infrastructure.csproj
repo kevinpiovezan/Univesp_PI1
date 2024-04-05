@@ -29,6 +29,7 @@
     <Compile Remove="Data\Repositories\StatusArquivoRepository.cs" />
     <Compile Remove="Data\Repositories\TipoArquivoRepository.cs" />
     <Compile Remove="Data\Repositories\TipoClienteRepository.cs" />
+    <Compile Remove="Services\OktaUserService.cs" />
   </ItemGroup>
 
 </Project>

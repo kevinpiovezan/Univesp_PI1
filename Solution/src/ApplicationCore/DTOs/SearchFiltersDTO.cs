@@ -1,4 +1,5 @@
-﻿using Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.Business;
+﻿using System;
+using Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.Business;
 using System.Collections.Generic;
 
 namespace Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.DTOs
@@ -9,6 +10,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.DTOs
         public string Eixo { get; set; }
         public string Sei { get; set; }
         public string Cpf { get; set; }
+        public string Nascimento { get; set; }
         public int Status_Matricula { get; set; }
         
         public bool? EnsinoMedio_Escola_Publica { get; set; }
@@ -17,6 +19,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.DTOs
         public bool? Autorizacao_Imagem { get; set; }
         public bool? Cadastro_SpTrans { get; set; }
         public bool? Servidor_Publico { get; set; }
+        
 
     }
 }

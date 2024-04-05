@@ -10,21 +10,27 @@ using System.Threading.Tasks;
 using Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.Business;
 using Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.DTOs;
 using Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.Interfaces.Repository;
+using Univesp.CaminhoDoMar.ProjetoIntegradorApplicationCore.Interfaces.Service;
 
 namespace Univesp.CaminhoDoMar.ProjetoIntegradorWeb.Controllers
 {
     [Route("Carga")]
-    public class CargaController : ProtectedController
+    public class CargaController : BaseController
     {
         private readonly IAlunoRepository _alunoRepository;
         private Usuario usuarioLogado;
+        public readonly IIdentityService _identityService;
 
-        public CargaController(IUsuarioRepository usuarioRepository, 
-            IAlunoRepository alunoRepository 
-            ) : base(usuarioRepository)
+
+        public CargaController(IUsuarioRepository usuarioRepository, IIdentityService identityService,
+            
+            IAlunoRepository alunoRepository) : base(usuarioRepository, identityService)
         {
+           
             _alunoRepository = alunoRepository;
+            _identityService = identityService;
         }
+
 
         // public override void OnActionExecuting(ActionExecutingContext filterContext)
         // {

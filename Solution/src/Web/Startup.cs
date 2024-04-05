@@ -12,6 +12,8 @@ using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
 using Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Data.Context;
 using System;
+using Auth0.AspNetCore.Authentication;
+using Microsoft.IdentityModel.Logging;
 using Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.Configurations;
 using Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure;
 
@@ -30,9 +32,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegrador.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
-            //         .AddMicrosoftIdentityWebApp(Configuration.GetSection("AzureAd"));
-
+            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
             services.AddResponseCompression(options =>
             {
                 options.EnableForHttps = true;
@@ -44,9 +44,12 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegrador.Web
                 options.Cookie.IsEssential = true;
             });
 
-            services.AddControllersWithViews()
-                     .AddMicrosoftIdentityUI();
-
+            services.AddControllersWithViews();
+            services.AddAuth0WebAppAuthentication(options =>
+            {
+                options.Domain = Configuration["Auth0:Domain"];
+                options.ClientId = Configuration["Auth0:ClientId"];
+            });
 
             services.AddDbContext<AppDbContext>(
                     options => options.UseMySql(Configuration.GetConnectionString("MySqlConnectionString"),
@@ -63,7 +66,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegrador.Web
             });
 
             services.AddInfrastructure();
-            // services.AddAmazonS3StorageService();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -73,6 +76,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegrador.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                IdentityModelEventSource.ShowPII = true;
             }
             else
             {

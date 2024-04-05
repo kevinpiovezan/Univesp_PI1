@@ -41,7 +41,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.Data.Repositorie
             var query = (from a in _Context.Alunos
                 where 
                     (filters.Nome == "" || a.Nome.ToLower().Contains(filters.Nome.ToLower())) &&
-                    (filters.Sei == "" || a.Sei.ToLower().Contains(filters.Sei.ToLower())) &&
+                    (filters.Sei == "" || a.RA.ToLower().Contains(filters.Sei.ToLower())) &&
                     (filters.Eixo == "" || a.Eixo.ToLower().Contains(filters.Eixo.ToLower())) &&
                     (filters.Cpf == "" || filters.Cpf == a.Cpf) &&
                     (filters.Status_Matricula == 0|| a.Id_Status_Matricula == filters.Status_Matricula) &&
@@ -50,7 +50,8 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.Data.Repositorie
                     (filters.Cursou_Faculdade == null || a.Cursou_Faculdade == filters.Cursou_Faculdade) &&
                     (filters.EnsinoMedio_Escola_Publica == null || a.EnsinoMedio_Escola_Publica == filters.EnsinoMedio_Escola_Publica) &&
                     (filters.Cadastro_SpTrans == null || a.Cadastro_SpTrans == filters.Cadastro_SpTrans) &&
-                    (filters.Servidor_Publico == null || a.Servidor_Publico == filters.Servidor_Publico)
+                    (filters.Servidor_Publico == null || a.Servidor_Publico == filters.Servidor_Publico) &&
+                    (filters.Nascimento == "" || a.Data_Nascimento >= Convert.ToDateTime(filters.Nascimento))
 
                 select new BuscaRes()
                 {

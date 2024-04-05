@@ -7,25 +7,30 @@ using System.Threading.Tasks;
 using Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.Business;
 using Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.DTOs;
 using Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.Interfaces.Repository;
+using Univesp.CaminhoDoMar.ProjetoIntegradorApplicationCore.Interfaces.Service;
 using Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services;
 
 namespace Univesp.CaminhoDoMar.ProjetoIntegradorWeb.Controllers
 {
     [Route("busca")]
-    public class BuscaController : ProtectedController
+    public class BuscaController : BaseController
     {
         private readonly IAlunoRepository _alunoRepository;
-        private Usuario usuarioLogado;
+        private readonly IIdentityService _identityService;
 
-        public BuscaController(IUsuarioRepository usuarioRepository,
-            IAlunoRepository alunoRepository) : base(usuarioRepository)
+
+        public BuscaController(IUsuarioRepository usuarioRepository, IIdentityService identityService,
+            
+            IAlunoRepository alunoRepository) : base(usuarioRepository, identityService)
         {
+           
             _alunoRepository = alunoRepository;
+            _identityService = identityService;
         }
 
         public async Task<IActionResult> Index()
         {
-            // Usuario usuarioLogado = await _usuarioRepository.ObterUsuarioOuInserir(_identityService.ObterEmail(), _identityService.ObterNome());
+            Usuario usuarioLogado = _usuarioRepository.ObterPorEmail(_identityService.ObterEmail());
             var model = new FiltersBusca();
 
             return View(model);

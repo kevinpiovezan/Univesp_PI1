@@ -34,13 +34,14 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Data.Repositories
 
         public async Task<Usuario> ObterUsuarioOuInserir(string email, string nome)
         {
-            Usuario usuario = await _Context.Usuarios.Where(u => u.Email == email).FirstOrDefaultAsync();
+            Usuario usuario = await _Context.Usuarios.FirstOrDefaultAsync(u => u.Email == email);
             
             if (usuario == null)
             {
                 usuario = new Usuario();
                 usuario.Email = email;
                 usuario.Nome = nome;
+                usuario.IsAdmin = false;
 
                 await Adicionar(usuario);
             }

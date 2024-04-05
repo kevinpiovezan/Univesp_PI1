@@ -20,18 +20,19 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
         public string ObterEmail()
         {
 #if DEBUG
-            return "admin@univesp.com";
+            return "kevinpiovezan@gmail.com";
 #else
-            return GetUser().Identity.Name;
+            // return GetUser().Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+            return  GetUser().Identity.Name;
 #endif
         }
 
         public string ObterNome()
         {
 #if DEBUG
-            return "Admin univesp";
+            return "Kevin Piovezan";
 #else
-            return GetUser()?.Claims?.Single(u => u.Type == "name").Value;
+            return  GetUser().Identity.Name;
 #endif
         }
 

@@ -10,7 +10,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.Business
         public int Id_Status_Matricula { get; set; }
         public string Cep { get; set; }
         public string Nome { get; set; }
-        public string Sei { get; set; }
+        public string RA { get; set; }
         public string Nome_Social { get; set; }
         public string Endereco { get; set; }
         public string Cursos { get; set; }
@@ -42,7 +42,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.Business
                 case 1:
                     return EStatus_Matricula.ATIVA.ToString();
                 case 2:
-                    return EStatus_Matricula.PAUSADA.ToString();
+                    return EStatus_Matricula.TRANCADA.ToString();
                 case 3:
                     return EStatus_Matricula.CONCLUIDA.ToString();
                 case 4:

@@ -31,8 +31,8 @@
         <section class="card-dashboard" id="total-alunos-pausados">
              <i class="fas fa-user card-icon"></i>
              <div class="card-data">
-                 <h5> @Model.Alunos.Count(c => c.Id_Status_Matricula == (int)EStatus_Matricula.PAUSADA) </h5>
-                 <p class="p-1">Total de Alunos com matriculas pausadas</p>
+                 <h5> @Model.Alunos.Count(c => c.Id_Status_Matricula == (int)EStatus_Matricula.TRANCADA) </h5>
+                 <p class="p-1">Total de Alunos com matriculas trancadas</p>
              </div>
         </section> 
         <section class="card-dashboard" id="total-alunos-concluidos">

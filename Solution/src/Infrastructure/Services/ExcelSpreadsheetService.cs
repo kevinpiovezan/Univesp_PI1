@@ -171,7 +171,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
             var workSheet = excel.Workbook.Worksheets.Add("Clientes");
             Dictionary<string, int> indiceHeader = new Dictionary<string, int>();
 
-            List<string> cabecalho = new List<string>() { "Status Matricula","Nome","Sei","Nome Social", "Data de Nascimento", "CPF", "RG", "UF", "Data de Emissão", "E-mail pessoal", "Endereco", "CEP", "Celular",
+            List<string> cabecalho = new List<string>() { "Status Matricula","Nome","RA","Nome Social", "Data de Nascimento", "CPF", "RG", "UF", "Data de Emissão", "E-mail pessoal", "Endereco", "CEP", "Celular",
                 "Telefone Fixo", "Gênero", "Raça/Cor/Etnia","Cursou Ensino Médio em Escola Pública?", "Já cursou alguma faculdade?", "Se sim, quais cursos?", "É professor?",
                 "É Servidor Público?", "Eixo escolhido na UniCeu", "Cadastro Bilhete de estudante(SPTrans)","Autorização de Imagem" };
             foreach (string c in cabecalho)
@@ -192,7 +192,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
                         statusMatricula = EStatus_Matricula.ATIVA.ToString();
                         break;
                     case 2:
-                        statusMatricula = EStatus_Matricula.PAUSADA.ToString();
+                        statusMatricula = EStatus_Matricula.TRANCADA.ToString();
                         break;
                     case 3:
                         statusMatricula = EStatus_Matricula.CONCLUIDA.ToString();
@@ -203,7 +203,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
                 }
                 workSheet.Cells[currentRow, 1].Value = statusMatricula;
                 workSheet.Cells[currentRow, 2].Value = a.Nome;
-                workSheet.Cells[currentRow, 3].Value = a.Sei;
+                workSheet.Cells[currentRow, 3].Value = a.RA;
                 workSheet.Cells[currentRow, 4].Value = a.Nome_Social;
                 workSheet.Cells[currentRow, 5].Value = a.Data_Nascimento.ToString("dd/MM/yyyy");
                 workSheet.Cells[currentRow, 6].Value = a.Cpf;
@@ -244,7 +244,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
             ExcelPackage excel = new ExcelPackage(arquivo);
 
             ExcelWorksheet planilha = excel.Workbook.Worksheets[0];
-            List<string> cabecalho = new List<string>() { "Status Matricula","Nome","Sei","Nome Social", "Data de Nascimento", "CPF", "RG", "UF", "Data de Emissão", "E-mail pessoal", "Endereco", "CEP", "Celular",
+            List<string> cabecalho = new List<string>() { "Status Matricula","Nome","RA","Nome Social", "Data de Nascimento", "CPF", "RG", "UF", "Data de Emissão", "E-mail pessoal", "Endereco", "CEP", "Celular",
                 "Telefone Fixo", "Gênero", "Raça/Cor/Etnia","Cursou Ensino Médio em Escola Pública?", "Já cursou alguma faculdade?", "Se sim, quais cursos?", "É professor?",
                 "É Servidor Público?", "Eixo escolhido na UniCeu", "Cadastro Bilhete de estudante(SPTrans)","Autorização de Imagem" };
 
@@ -277,7 +277,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
                     case "ATIVA":
                         statusMatricula = 1;
                         break;
-                    case "PAUSADA":
+                    case "TRANCADA":
                         statusMatricula = 2;
                         break;
                     case "CONCLUIDA":
@@ -291,7 +291,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
                 {
                     Id_Status_Matricula = statusMatricula,
                     Nome = planilha.Cells[r, 2].Text,
-                    Sei = planilha.Cells[r, 3].Text,
+                    RA = planilha.Cells[r, 3].Text,
                     Nome_Social = planilha.Cells[r, 4].Text,
                     Data_Nascimento = DateTime.ParseExact(planilha.Cells[r, 5].Text,"dd/MM/yyyy", CultureInfo.InvariantCulture),
                     Cpf = planilha.Cells[r, 6].Text,
@@ -324,7 +324,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
                 {
                     critica.Criticas.Add("'Nome' não pode ficar vazio");
                 }
-                if (a.Sei == "")
+                if (a.RA == "")
                 {
                     critica.Criticas.Add("'Sei' não pode ficar vazio");
                 }
@@ -443,7 +443,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
 
                 List<string> cabecalho = new List<string>()
                 {
-                    "Última atualização", "Status Matricula","Nome","Sei","Nome Social", "Data de Nascimento", "CPF", "RG", "UF", "Data de Emissão", "E-mail pessoal", "Endereco", "CEP", "Celular",
+                    "Última atualização", "Status Matricula","Nome","RA","Nome Social", "Data de Nascimento", "CPF", "RG", "UF", "Data de Emissão", "E-mail pessoal", "Endereco", "CEP", "Celular",
                     "Telefone Fixo", "Gênero", "Raça/Cor/Etnia","Cursou Ensino Médio em Escola Pública?", "Já cursou alguma faculdade?", "Se sim, quais cursos?", "É professor?",
                     "É Servidor Público?", "Eixo escolhido na UniCeu", "Cadastro Bilhete de estudante(SPTrans)","Autorização de Imagem"
                 };
@@ -466,7 +466,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
                             statusMatricula = EStatus_Matricula.ATIVA.ToString();
                             break;
                         case 2:
-                            statusMatricula = EStatus_Matricula.PAUSADA.ToString();
+                            statusMatricula = EStatus_Matricula.TRANCADA.ToString();
                             break;
                         case 3:
                             statusMatricula = EStatus_Matricula.CONCLUIDA.ToString();
@@ -478,7 +478,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
                     workSheet.Cells[currentRow, 1].Value = a.Ultima_Atualizacao.ToString("dd/MM/yyyy HH:mm");
                     workSheet.Cells[currentRow, 2].Value = statusMatricula;
                     workSheet.Cells[currentRow, 3].Value = a.Nome;
-                    workSheet.Cells[currentRow, 4].Value = a.Sei;
+                    workSheet.Cells[currentRow, 4].Value = a.RA;
                     workSheet.Cells[currentRow, 5].Value = a.Nome_Social;
                     workSheet.Cells[currentRow, 6].Value = a.Data_Nascimento.ToString("dd/MM/yyyy");
                     workSheet.Cells[currentRow, 7].Value = a.Cpf;

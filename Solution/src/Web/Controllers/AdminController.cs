@@ -14,15 +14,19 @@ using Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.Interfaces.Reposito
 
 namespace Univesp.CaminhoDoMar.ProjetoIntegradorWeb.Controllers
 {
-    public class AdminController : ProtectedController
+    public class AdminController : BaseController
     {
         private readonly IAlunoRepository _alunoRepository;
-        private Usuario usuarioLogado;
+        private readonly IIdentityService _identityService;
 
-        public AdminController(IUsuarioRepository usuarioRepository, 
-            IAlunoRepository alunoRepository) : base(usuarioRepository)
+
+        public AdminController(IUsuarioRepository usuarioRepository, IIdentityService identityService,
+            
+            IAlunoRepository alunoRepository) : base(usuarioRepository, identityService)
         {
+           
             _alunoRepository = alunoRepository;
+            _identityService = identityService;
         }
 
         // public override void OnActionExecuting(ActionExecutingContext filterContext)
@@ -41,6 +45,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorWeb.Controllers
 
         public async Task<IActionResult> Index()
         {
+            Usuario usuarioLogado = _usuarioRepository.ObterPorEmail(_identityService.ObterEmail());
             AdminModel adminViewModel = new AdminModel();
             adminViewModel.Usuarios =  _usuarioRepository.ObterTodos().Result.OrderBy(o => o.Nome).ToList();
 

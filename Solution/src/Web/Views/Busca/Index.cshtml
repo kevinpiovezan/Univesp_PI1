@@ -40,7 +40,7 @@
             <select id="matricula" name="matricula" class="form-control">
                 <option value="0" selected>TODOS OS STATUS</option>
                 <option value="1">ATIVA</option>
-                <option value="2">PAUSADA</option>
+                <option value="2">TRANCADA</option>
                 <option value="3">CONCLUIDA</option>
                 <option value="4">CANCELADA</option>
             </select>
@@ -92,6 +92,11 @@
                 <option value="sim">Sim</option>
                 <option value="nao">Não</option>
             </select>
+        </div>
+        <div class="form-group col-lg-3 col-12">
+            <label for="nascimento">Nascido Até:</label>
+            <input id="nascimento" name="nascimento" class="form-control" type="date"/>
+            
         </div>
         
     </form>
@@ -213,6 +218,7 @@
         let servidor_Publico = document.getElementById('servidor_publico').value;
         let cadastro_SpTrans = document.getElementById('sptrans').value;
         let autorizacao_Imagem = document.getElementById('autorizacao_imagem').value;
+        let nascimento = document.getElementById("nascimento").value;
         
         if(professor === "sim"){
             professor = true;
@@ -274,6 +280,7 @@
             sei: document.getElementById('sei').value,
             status_Matricula: parseInt(document.getElementById('matricula').value),
             eixo: document.getElementById('eixo').value,
+            nascimento:nascimento
         };
         return data;
     }

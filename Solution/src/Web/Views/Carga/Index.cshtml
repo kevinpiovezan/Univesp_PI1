@@ -119,7 +119,7 @@
                                     <tr>
                                         <th>Status da Matricula</th>
                                         <th>Nome</th>
-                                        <th>Sei</th>
+                                        <th>RA</th>
                                         <th>Nome Social</th>
                                         <th>Data de Nascimento</th>
                                         <th>CPF</th>
@@ -152,7 +152,7 @@
                         status = "ATIVA";
                         break;
                     case 2:
-                        status = "PAUSADA"; 
+                        status = "TRANCADA"; 
                         break;
                     case 3:
                         status = "CONCLUIDA";
@@ -164,7 +164,7 @@
                 console.log(entry)
                 htmlLista += "<tr><td>" + status + "</td>";
                 htmlLista += "<td>" + entry.nome + "</td>";
-                htmlLista += "<td>" + entry.sei + "</td>";
+                htmlLista += "<td>" + entry.ra + "</td>";
                 htmlLista += "<td>" + entry.nome_Social + "</td>";
                 htmlLista += "<td>" + `${dataNascimento.getDate()}/${dataNascimento.getMonth()+1}/${dataNascimento.getFullYear()}` + "</td>";
                 htmlLista += "<td>" + entry.cpf + "</td>";

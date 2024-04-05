@@ -62,12 +62,12 @@
                 @*     <i class="fas fa-user-tie main-menu-icon fa-fw"></i> *@
                 @*     Área Administrativa *@
                 @* </a> *@
-                @* <a class="list-group-item list-group-item-action bg-light" href="/logout"> *@
-                @*     <i class="fas fa-sign-out-alt main-menu-icon fa-fw"></i> *@
-                @*     Logout *@
-                @* </a> *@
+                <a class="list-group-item list-group-item-action bg-light" asp-controller="Account" asp-action="Logout">
+                    <i class="fas fa-sign-out-alt main-menu-icon fa-fw"></i>
+                    Logout
+                </a>
             </div>
-            <div class="version">Versão 27012024.1206</div>
+            <div class="version">Versão 05042024.1206</div>
         </div>
 
         <!-- Page Content-->
@@ -91,6 +91,7 @@
 
     </div>
     @RenderSection("Scripts", required: false)
+    <partial name="_CookieConsentPartial" />
 </body>
 </html>
 

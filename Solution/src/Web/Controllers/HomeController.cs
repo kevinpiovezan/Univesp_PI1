@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using Univesp.CaminhoDoMar.ProjetoIntegradorApplicationCore.Interfaces.Service;
 using Univesp.CaminhoDoMar.ProjetoIntegradorWeb.Models;
 using System.Diagnostics;
@@ -9,25 +10,32 @@ using Univesp.CaminhoDoMar.ProjetoIntegrador.Web.Models;
 
 namespace Univesp.CaminhoDoMar.ProjetoIntegradorWeb.Controllers
 {
-    public class HomeController : ProtectedController
+    public class HomeController : BaseController
     {
 
         private readonly IAlunoRepository _alunoRepository;
-        private Usuario usuarioLogado;
+        protected readonly IUsuarioRepository _usuarioRepository;
+        private readonly IIdentityService _identityService;
 
-        public HomeController(IUsuarioRepository usuarioRepository,
+
+
+        public HomeController(IUsuarioRepository usuarioRepository, IIdentityService identityService,
             
-            IAlunoRepository alunoRepository) : base(usuarioRepository)
+            IAlunoRepository alunoRepository) : base(usuarioRepository,identityService)
         {
            
             _alunoRepository = alunoRepository;
-            
+            _usuarioRepository = usuarioRepository;
+            _identityService = identityService;
         }
 
 
         public async Task<IActionResult> Index()
         {
-            // Usuario usuarioLogado = await _usuarioRepository.ObterUsuarioOuInserir(_identityService.ObterEmail(), _identityService.ObterNome());
+            var usuarios = await _usuarioRepository.ObterTodos();
+            Console.WriteLine("TO AQUI PORRA");
+            Console.WriteLine(_identityService.ObterEmail());
+            Usuario usuarioLogado = _usuarioRepository.ObterPorEmail(_identityService.ObterEmail());
 
             var model = new HomeModel()
             {
@@ -35,7 +43,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorWeb.Controllers
                 Alunos = await _alunoRepository.ObterTodos(),
             };
 
-            model.TodosUsuarios = await _usuarioRepository.ObterTodos();
+            model.TodosUsuarios = usuarios;
             return View(model);
         }
         

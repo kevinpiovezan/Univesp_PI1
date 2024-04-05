@@ -4,23 +4,28 @@ using System.Threading.Tasks;
 using Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.Business;
 using Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.Interfaces.Repository;
 using Univesp.CaminhoDoMar.ProjetoIntegrador.Web.Models;
+using Univesp.CaminhoDoMar.ProjetoIntegradorApplicationCore.Interfaces.Service;
 
 namespace Univesp.CaminhoDoMar.ProjetoIntegradorWeb.Controllers
 {
     [Route("aluno")]
-    public class AlunoController : Controller
+    public class AlunoController : BaseController
     {
         private readonly IAlunoRepository _alunoRepository;
         private readonly IUsuarioRepository _usuarioRepository;
-        public AlunoController(IAlunoRepository alunoRepository,IUsuarioRepository usuarioRepository)
+        private readonly IIdentityService _identityService;
+
+        public AlunoController(IAlunoRepository alunoRepository,IUsuarioRepository usuarioRepository,IIdentityService identityService) : base(usuarioRepository, identityService)
         {
             _alunoRepository = alunoRepository;
             _usuarioRepository = usuarioRepository;
+            _identityService = identityService;
         }
 
         [Route("{cpf}")]
         public async Task<IActionResult> Index(string cpf)
         {
+            Usuario usuarioLogado = _usuarioRepository.ObterPorEmail(_identityService.ObterEmail());
             var aluno = await _alunoRepository.ObtemAlunoPorCPF(cpf);
             if (aluno == null)
                 return View("NaoEncontrado");

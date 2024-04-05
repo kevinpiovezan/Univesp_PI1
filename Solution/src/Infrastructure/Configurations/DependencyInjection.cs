@@ -29,5 +29,6 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.Configurations
 
             return services;
         }
+        
     }
 }
