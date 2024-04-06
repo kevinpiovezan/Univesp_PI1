@@ -28,8 +28,8 @@
                 <input id="nome-social" type="text" class="form-control" placeholder="Campo opcional">
             </div>
             <div class="form-group">
-                <label for="sei">Sei:</label>
-                <input id="sei" type="text" class="form-control">
+                <label for="RA">RA:</label>
+                <input id="RA" type="text" class="form-control">
             </div>
             <div class="form-group">
                 <label for="data-nascimento">Data Nascimento:</label>
@@ -105,13 +105,11 @@
                 <select class="form-control" id="genero">
                     <option value="Masculino">Masculino</option>
                     <option value="Feminino">Feminino</option>
-                    <option value="Homem Cis">Homem Cis</option>
                     <option value="Homem Trans">Homem Trans</option>
-                    <option value="Mulher Cis">Mulher Cis</option>
                     <option value="Mulher Trans">Mulher Trans</option>
                     <option value="NaoBinario">Não-Binário</option>
                     <option value="Travesti">Travesti</option>
-										 <option value="Outros">Outros</option>
+                    <option value="Outros">Outros</option>
                 </select>
             </div>
         </div>
@@ -172,7 +170,7 @@
                 <select class="form-control" id="eixo">
                     <option value="Licenciatura">Licenciatura</option>
                     <option value="Computação">Computação</option>
-                    <option value="Negocios">Negócios</option>
+                    <option value="Negócios">Negócios</option>
                 </select>
             </div>
             <div class="form-group">
@@ -316,7 +314,7 @@
     const adicionarAluno = () => {
         let nome = $("#nome").val();
         let nome_Social = $("#nome-social").val();
-        let sei = $("#sei").val();
+        let RA = $("#RA").val();
         let data_nascimento = $("#data-nascimento").val();
         let cpf = $("#cpf").val();
         let rg = $("#rg").val();
@@ -344,8 +342,8 @@
             return;
         }
         
-        if(sei === ""){
-            toastr.error("'Sei' não pode estar vazio");
+        if(RA === ""){
+            toastr.error("'RA' não pode estar vazio");
             return;
         }
 
@@ -382,7 +380,7 @@
         
         let data = {
             id_Status_Matricula: id_Status_Matricula,
-            sei:sei,
+            RA:RA,
             cep: cep,
             nome: nome,
             nome_Social: nome_Social,

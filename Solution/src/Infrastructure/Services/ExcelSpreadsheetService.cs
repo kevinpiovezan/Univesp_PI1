@@ -326,7 +326,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegradorInfrastructure.Services
                 }
                 if (a.RA == "")
                 {
-                    critica.Criticas.Add("'Sei' não pode ficar vazio");
+                    critica.Criticas.Add("'RA' não pode ficar vazio");
                 }
                 if (a.Data_Nascimento == DateTime.MinValue)
                 {

@@ -8,7 +8,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.DTOs
     {
         public string Nome { get; set; }
         public string Eixo { get; set; }
-        public string Sei { get; set; }
+        public string RA { get; set; }
         public string Cpf { get; set; }
         public string Nascimento { get; set; }
         public int Status_Matricula { get; set; }

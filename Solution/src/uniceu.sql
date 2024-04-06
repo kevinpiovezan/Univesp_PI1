@@ -3,7 +3,7 @@ CREATE TABLE `Alunos` (
   `Id` int NOT NULL AUTO_INCREMENT,
   `Id_Status_Matricula` int NOT NULL,
   `Nome` varchar(255) NOT NULL,
-  `Sei` varchar(255) NOT NULL,
+  `RA` varchar(255) NOT NULL,
   `Nome_Social` varchar(255) DEFAULT NULL,
   `Cep` varchar(26) NOT NULL,
   `Endereco` text NOT NULL,
