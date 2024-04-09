@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.Business;
 using Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.DTOs;
 using Univesp.CaminhoDoMar.ProjetoIntegrador.ApplicationCore.Interfaces.Repository;
@@ -31,7 +31,7 @@ namespace Univesp.CaminhoDoMar.ProjetoIntegrador.Infrastructure.Data.Repositorie
                     (filters.EnsinoMedio_Escola_Publica == null || a.EnsinoMedio_Escola_Publica == filters.EnsinoMedio_Escola_Publica) &&
                     (filters.Cadastro_SpTrans == null || a.Cadastro_SpTrans == filters.Cadastro_SpTrans) &&
                     (filters.Servidor_Publico == null || a.Servidor_Publico == filters.Servidor_Publico) &&
-                    (filters.Nascimento == "" || a.Data_Nascimento >= Convert.ToDateTime(filters.Nascimento))
+                    (filters.Nascimento == "" || a.Data_Nascimento <= Convert.ToDateTime(filters.Nascimento))
                 select a).AsNoTracking().Distinct().ToListAsync();
         }
 
