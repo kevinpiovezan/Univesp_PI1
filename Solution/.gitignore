@@ -1,2 +1,8 @@
 Solution.sln.DotSettings.user
 .idea
+src/ApplicationCore/obj
+src/Infrastructure/obj
+src/Web/obj
+src/ApplicationCore/bin
+src/Infrastructure/bin
+src/Web/bin
